@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Primary Meta Tags -->
+    <title>VasuNiti — Software Built for the Way the World Works</title>
+    <meta name="title" content="VasuNiti — Software Built for the Way the World Works" />
+    <meta name="description" content="VasuNiti builds intelligent, scalable software products that help modern businesses simplify complexity, automate operations, and scale with confidence." />
+    <meta name="keywords" content="VasuNiti, enterprise software, SaaS, automation, cloud platforms, digital transformation, business software, analytics" />
+    <meta name="author" content="VasuNiti Inc." />
+    
+    <!-- Open Graph / Facebook / LinkedIn -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://vasuniti.com/" />
+    <meta property="og:title" content="VasuNiti — Software Built for the Way the World Works" />
+    <meta property="og:description" content="VasuNiti builds intelligent, scalable software products that help modern businesses simplify complexity, automate operations, and move faster." />
+    <meta property="og:image" content="/og-image.png" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://vasuniti.com/" />
+    <meta property="twitter:title" content="VasuNiti — Software Built for the Way the World Works" />
+    <meta property="twitter:description" content="Intelligent, scalable software products for enterprise automation, cloud infrastructure, and business operations." />
+    <meta property="twitter:image" content="/og-image.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
+    
+    <script>
+      // Apply theme immediately to prevent FOUC (Flash of Unstyled Content)
+      (function() {
+        const storedTheme = localStorage.getItem('vasuniti-theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        if (storedTheme === 'dark' || (!storedTheme && systemDark) || !storedTheme) {
+          document.documentElement.classList.add('dark');
+          document.documentElement.classList.remove('light');
+        } else {
+          document.documentElement.classList.remove('dark');
+          document.documentElement.classList.add('light');
+        }
+      })();
+    </script>
+  </head>
+  <body class="bg-light-bg text-light-text dark:bg-dark-bg dark:text-dark-text antialiased selection:bg-brand-500 selection:text-white transition-colors duration-300">
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
