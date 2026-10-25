@@ -13,12 +13,14 @@ export const ThemeToggle: React.FC<ThemeToggleProps> = ({ className = '' }) => {
 
   return (
     <button
+      id="theme-toggle-button"
+      type="button"
       onClick={toggleTheme}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
-      className={`relative p-2 rounded-xl border transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-brand-500/50 ${
+      className={`relative p-2.5 rounded-xl border transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-indigo-500 ${
         isDark
-          ? 'bg-dark-surface/80 border-white/10 text-slate-300 hover:text-white hover:border-white/20 shadow-sm'
-          : 'bg-light-surface/90 border-black/10 text-slate-700 hover:text-black hover:border-black/20 shadow-sm'
+          ? 'bg-slate-900/80 hover:bg-slate-800 border-white/10 text-amber-400 hover:text-amber-300 shadow-sm'
+          : 'bg-white hover:bg-slate-100 border-slate-200 text-slate-700 hover:text-slate-900 shadow-sm'
       } ${className}`}
     >
       <div className="relative w-5 h-5 flex items-center justify-center overflow-hidden">

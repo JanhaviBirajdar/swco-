@@ -7,9 +7,9 @@ interface SEOHeadProps {
 }
 
 export const SEOHead: React.FC<SEOHeadProps> = ({
-  title = 'VasuNiti — Software Built for the Way the World Works',
-  description = 'VasuNiti builds intelligent, scalable software products that help modern businesses simplify complexity, automate operations, and scale with confidence.',
-  keywords = 'VasuNiti, enterprise software, SaaS, automation, cloud platforms, digital transformation, business software, analytics',
+  title = 'VasuNiti — Outcome-Based Education & CO–PO Mapping Software for Higher Education',
+  description = 'Simplify CO–PO mapping, calculate outcome attainment, and organize academic evidence for NBA and NAAC quality assurance workflows with VasuNiti.',
+  keywords = 'VasuNiti, CO-PO Mapping Software, Outcome-Based Education Software, CO-PO Attainment Software, Academic Outcome Management, NBA Documentation Support Software, NAAC Documentation Support Software, Higher Education OBE',
 }) => {
   useEffect(() => {
     document.title = title;

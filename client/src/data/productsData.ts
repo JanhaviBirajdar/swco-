@@ -2,463 +2,295 @@ import { Product } from '../types';
 
 export const productsData: Product[] = [
   {
-    slug: 'vasuniti-business-suite',
-    name: 'VasuNiti Business Suite',
-    tagline: 'Unified Enterprise Operations & Workflow Platform',
-    shortDescription: 'An integrated operating system designed for modern enterprises to orchestrate operations, govern complex workflows, and synchronize global organizational data.',
-    fullDescription: 'VasuNiti Business Suite bridges the gap between disconnected software silos. From enterprise resource governance and intelligent pipeline management to dynamic resource allocation and unified communication, it delivers real-time operational clarity across departments.',
+    slug: 'copo-mapping-engine',
+    name: 'CO–PO–PSO Mapping Engine',
+    tagline: 'Standardized Outcome Alignment & Correlation Matrix',
+    shortDescription: 'Define Bloom’s-aligned Course Outcomes and seamlessly map them to Programme Outcomes and Programme-Specific Outcomes with qualitative justification rubrics.',
+    fullDescription: 'The VasuNiti CO–PO–PSO Mapping Engine eliminates chaotic spreadsheets by providing an intuitive, multi-dimensional matrix. Faculty members define course outcomes according to Revised Bloom’s Taxonomy, correlate them to PO1–PO12 and PSOs at levels 0, 1, 2, or 3, and document explicit mapping justifications required by NBA SAR Criterion 3.',
     category: 'Enterprise Suite',
-    badge: 'Flagship Platform',
-    icon: 'LayoutDashboard',
-    color: '#3888ff',
+    badge: 'Core OBE Engine',
+    icon: 'Network',
+    color: '#315FEA',
     order: 1,
     featured: true,
     capabilities: [
-      'Multi-entity Organization Governance',
-      'Dynamic Business Logic Orchestration',
-      'Cross-department Collaboration Hub',
-      'Real-time Financial & Operational Telemetry',
-      'Enterprise Role-Based Access Control (RBAC)',
-      'Custom Workflow Builder with Visual Canvas'
+      'Multi-tier Bloom’s Taxonomy tagging (L1 Remember to L6 Create)',
+      '12 Programme Outcomes (PO1-PO12) & custom PSO alignment',
+      'Correlation levels: 0 (None), 1 (Low), 2 (Medium), 3 (High)',
+      'Justification notes & rubric rationale per mapped cell',
+      'Automated course-level and department-level average matrices',
+      'Curriculum change history & revision tracking'
     ],
     features: [
       {
-        title: 'Unified Operational Hub',
-        description: 'Aggregate operations, projects, personnel, and compliance metrics into a single high-performance cockpit.',
-        icon: 'LayoutGrid',
-        highlight: 'Real-time synchronization across 50+ integrations'
+        title: 'Interactive Correlation Matrix',
+        description: 'Input mapping weights with instant visual heatmap indicators and calculated row/column averages.',
+        icon: 'Grid',
+        highlight: 'Automatic matrix normalization'
       },
       {
-        title: 'Adaptive Process Engine',
-        description: 'Design, execute, and monitor multi-tiered business processes with zero code and rule-based triggering.',
-        icon: 'Cpu',
-        highlight: '99.99% workflow completion reliability'
+        title: 'Bloom’s Action Verb Library',
+        description: 'Built-in taxonomy recommendations guide faculty to draft precise, measurable outcome statements.',
+        icon: 'BookOpen',
+        highlight: 'AICTE / Washington Accord aligned'
       },
       {
-        title: 'Enterprise Audit Trail',
-        description: 'Immutable transaction and modification logs complying with global corporate governance standards.',
-        icon: 'ShieldCheck',
-        highlight: 'SOC2 & ISO 27001 ready'
+        title: 'Mapping Justification Logs',
+        description: 'Attach contextual explanations to correlation values to demonstrate pedagogical intent during peer review audits.',
+        icon: 'FileText',
+        highlight: 'NBA Criterion 3 compliant'
       },
       {
-        title: 'Predictive Resource Planning',
-        description: 'AI-assisted capacity planning, headcount utilization, and budgetary forecasting.',
-        icon: 'TrendingUp',
-        highlight: 'Reduces operational overhead by up to 34%'
+        title: 'Batch & Regulation Versioning',
+        description: 'Maintain distinct mapping schemes across autonomous, affiliated, and CBCS/NEP syllabus revisions.',
+        icon: 'Layers',
+        highlight: 'Zero data overwriting across batches'
       }
     ],
     benefits: [
       {
-        metric: '42%',
-        label: 'Faster Workflow Execution',
-        detail: 'Reduces cycle times by automating multi-step approval and data reconciliation procedures.'
+        metric: '100%',
+        label: 'Traceable Outcome Alignment',
+        detail: 'Every single assessment question links directly to validated course learning outcomes.'
       },
       {
-        metric: '99.99%',
-        label: 'System Uptime SLA',
-        detail: 'Guaranteed platform availability with redundant distributed multi-zone failovers.'
-      },
-      {
-        metric: '3.8x',
-        label: 'ROI in Year One',
-        detail: 'Average efficiency return reported across enterprise deployments in finance and logistics.'
+        metric: 'Zero',
+        label: 'Spreadsheet Calculation Errors',
+        detail: 'Eliminates formula inconsistencies and broken links across departmental Excel files.'
       }
     ],
     faqs: [
       {
-        question: 'How quickly can VasuNiti Business Suite be deployed in an enterprise?',
-        answer: 'Typical enterprise rollouts take between 2 to 4 weeks, with pre-built connectors for legacy ERPs, CRM systems, and identity providers like Okta and Azure AD.'
+        question: 'How are correlation values defined?',
+        answer: 'Values follow standard NBA guidelines: 0 = No correlation, 1 = Slight/Low (up to 30% contribution), 2 = Moderate/Medium (30-60%), and 3 = Substantial/High (>60% contribution).'
       },
       {
-        question: 'Does Business Suite support multi-currency and global subsidiaries?',
-        answer: 'Yes, full multi-entity, multi-currency, and localized regulatory compliance modules are built into the core architecture.'
-      },
-      {
-        question: 'Can we host VasuNiti Business Suite on private cloud infrastructure?',
-        answer: 'We support Managed Cloud (VasuNiti Cloud), Dedicated VPC deployments on AWS/Azure/GCP, and on-premise air-gapped Kubernetes clusters.'
+        question: 'Can we define custom PSOs for emerging specializations?',
+        answer: 'Yes. Departments can define unlimited Programme-Specific Outcomes (e.g., PSO1, PSO2 for AI & Machine Learning, Robotics, etc.).'
       }
     ],
     specs: {
-      deployment: 'Cloud, Dedicated VPC, Hybrid, or Air-Gapped Kubernetes',
-      compliance: 'SOC 2 Type II, ISO 27001, HIPAA, GDPR Compliant',
-      availability: '99.99% Guaranteed SLA with Multi-Region High Availability',
-      apiSupport: 'REST, GraphQL, gRPC, and Realtime WebSocket Webhooks'
-    },
-    status: 'active'
+      deployment: 'Cloud SaaS / On-Premise Campus Option',
+      compliance: 'NBA SAR & NAAC SSR Format Aligned',
+      availability: '99.9% Uptime Guarantee',
+      apiSupport: 'University ERP & LMS Data Ingestion'
+    }
   },
   {
-    slug: 'vasuniti-analytics',
-    name: 'VasuNiti Analytics',
-    tagline: 'Predictive Intelligence & Real-Time Data Fabric',
-    shortDescription: 'Transform petabyte-scale distributed business data into ultra-low-latency insights, automated anomaly detection, and actionable forward-looking intelligence.',
-    fullDescription: 'Engineered for organizations that cannot afford stale data, VasuNiti Analytics provides a unified real-time data engine that connects seamlessly to transactional databases, event streams, and cloud lakes to deliver sub-second querying and automated decision intelligence.',
+    slug: 'outcome-attainment-analytics',
+    name: 'Outcome Attainment & Analytics Suite',
+    tagline: 'Automated Direct & Indirect Attainment Computation',
+    shortDescription: 'Compute accurate course outcome attainment from internal assessments, semester exams, and indirect exit surveys against institutional target benchmarks.',
+    fullDescription: 'Say goodbye to error-prone manual calculations. VasuNiti automatically ingests student marks, maps question-level scores to specific COs, applies direct and indirect weighting (e.g., 80:20), and benchmarks attainment against institutional targets with instant variance identification.',
     category: 'Data & Intelligence',
-    badge: 'Real-time Intelligence',
-    icon: 'LineChart',
-    color: '#06b6d4',
+    badge: 'Analytical Precision',
+    icon: 'BarChart3',
+    color: '#14213D',
     order: 2,
     featured: true,
     capabilities: [
-      'Sub-second Ingestion of 1M+ Events/sec',
-      'Autonomous Anomaly Detection with ML',
-      'Executive KPI Cockpits & Semantic Layer',
-      'Natural Language Data Querying',
-      'Federated Query Engine across Data Silos',
-      'Automated Executive Digest Generation'
+      'Question-to-CO mark distribution and scoring',
+      'Continuous Internal Evaluation (CIE) direct attainment',
+      'Semester End Examination (SEE) grade integration',
+      'Course Exit Survey (CES) indirect attainment conversion',
+      'Target threshold benchmarking (e.g., 60% of students scoring > 60%)',
+      'Multi-year outcome attainment trend analysis'
     ],
     features: [
       {
-        title: 'Distributed Query Engine',
-        description: 'Execute analytical computations directly across your data lakes without expensive data duplications.',
-        icon: 'Zap',
-        highlight: '10x faster query execution than legacy OLAP'
+        title: 'Direct Attainment Calculation',
+        description: 'Automated evaluation from unit tests, mid-terms, quizzes, and laboratory practical rubrics.',
+        icon: 'Calculator',
+        highlight: 'Configurable rubric levels 1, 2, and 3'
       },
       {
-        title: 'Self-Healing ML Forecasting',
-        description: 'Self-tuning time-series models detect market shifts, customer churn indicators, and operational bottlenecks.',
-        icon: 'Sparkles',
-        highlight: '94.8% baseline forecasting accuracy'
+        title: 'Indirect Attainment Surveys',
+        description: 'Built-in student course exit surveys converted into quantifiable indirect attainment scores.',
+        icon: 'PieChart',
+        highlight: 'Automated Likert-scale normalization'
       },
       {
-        title: 'Unified Semantic Modeling',
-        description: 'Define metrics once in code and serve consistent KPIs across all BI tools, applications, and APIs.',
-        icon: 'Database',
-        highlight: 'Zero metric divergence'
+        title: 'Target vs. Actual Gap Analysis',
+        description: 'Visual alerts immediately flag outcomes where student attainment falls below the set target threshold.',
+        icon: 'AlertTriangle',
+        highlight: 'Actionable CQI recommendations'
       },
       {
-        title: 'Real-time Alerting Mesh',
-        description: 'Configure intelligent multi-channel alerts that trigger instantaneous webhooks when anomalies occur.',
-        icon: 'BellRing',
-        highlight: 'Under 100ms notification latency'
-      }
-    ],
-    benefits: [
-      {
-        metric: '10x',
-        label: 'Faster Analytical Queries',
-        detail: 'Columnar memory-mapped execution yields answers to complex aggregations in milliseconds.'
-      },
-      {
-        metric: '68%',
-        label: 'Reduction in Reporting Prep',
-        detail: 'Automated data pipelines eliminate manual CSV extraction and spreadsheet consolidation.'
-      },
-      {
-        metric: '< 50ms',
-        label: 'Dashboard Render Latency',
-        detail: 'Instantaneous UI interactivity even when slicing millions of dimensional records.'
-      }
-    ],
-    faqs: [
-      {
-        question: 'Does VasuNiti Analytics require moving all data to a proprietary warehouse?',
-        answer: 'No. Our federated query engine queries your existing Postgres, Snowflake, BigQuery, ClickHouse, or S3 data lakes in place without vendor lock-in.'
-      },
-      {
-        question: 'Can business analysts query data using natural language?',
-        answer: 'Yes, our integrated semantic Copilot enables non-technical team members to ask plain English questions and receive verified charts and SQL explanations.'
-      }
-    ],
-    specs: {
-      deployment: 'SaaS Multi-tenant, Single-tenant VPC, or Self-hosted Engine',
-      compliance: 'SOC 2 Type II, HIPAA, ISO 27001, CCPA Compliant',
-      availability: '99.95% Query Processing Availability SLA',
-      apiSupport: 'High-throughput Arrow Flight, REST, PostgreSQL Wire Protocol'
-    },
-    status: 'active'
-  },
-  {
-    slug: 'vasuniti-automation',
-    name: 'VasuNiti Automation',
-    tagline: 'Autonomous Workflow Engine & AI Agent Orchestration',
-    shortDescription: 'Eliminate repetitive manual bottlenecks with intelligent bots, event-driven decision trees, and fault-tolerant background execution pipelines.',
-    fullDescription: 'VasuNiti Automation combines deterministic state machines with adaptive AI agents. It gives engineering and business teams the power to orchestrate complex multi-step workflows, reconcile billing, handle asynchronous background queues, and automate customer touchpoints safely.',
-    category: 'Workflow & Automation',
-    badge: 'Hyper-Automation',
-    icon: 'Workflow',
-    color: '#6366f1',
-    order: 3,
-    featured: true,
-    capabilities: [
-      'Event-Driven Distributed State Machines',
-      'Human-in-the-Loop Approval Checkpoints',
-      '200+ Enterprise Connectors & SDKs',
-      'Deterministic Rollback & Retry Protocols',
-      'AI Document Parsing & Extraction',
-      'Visual Timeline & Execution Replay'
-    ],
-    features: [
-      {
-        title: 'Durable Execution Engine',
-        description: 'Workflows persist state across network blips, server restarts, and multi-day waiting periods without losing data.',
-        icon: 'Repeat',
-        highlight: 'Zero dropped events or orphaned processes'
-      },
-      {
-        title: 'Intelligent Document Intelligence',
-        description: 'Extract structured data from unstructured invoices, contracts, and receipts with 99.4% precision.',
-        icon: 'FileText',
-        highlight: 'Supports 40+ global languages and formats'
-      },
-      {
-        title: 'Visual Workflow Studio',
-        description: 'Drag-and-drop builder for business leaders paired with code-first TypeScript/Python SDKs for engineers.',
-        icon: 'Sliders',
-        highlight: 'Seamless code-to-visual bidirectional sync'
-      },
-      {
-        title: 'Dynamic Agent Swarms',
-        description: 'Deploy specialized AI micro-agents that reason over tasks, fetch data, and complete verified actions.',
-        icon: 'Bot',
-        highlight: 'Strict guardrails and role boundaries'
+        title: 'Batch Attainment Summaries',
+        description: 'Consolidate 4-year undergraduate and 2-year postgraduate attainment for graduating cohorts.',
+        icon: 'TrendingUp',
+        highlight: 'Graduating batch attainment curves'
       }
     ],
     benefits: [
       {
         metric: '85%',
-        label: 'Manual Effort Reduction',
-        detail: 'Routine back-office verification and data entry workflows are fully automated.'
-      },
-      {
-        metric: '0.001%',
-        label: 'Error Rate',
-        detail: 'Algorithmic validation ensures precision far exceeding human manual data entry.'
-      },
-      {
-        metric: '100M+',
-        label: 'Daily Tasks Executed',
-        detail: 'Battle-tested architecture handling peak surges during month-end closes and holidays.'
-      }
-    ],
-    faqs: [
-      {
-        question: 'How do you handle workflow failures or third-party API downtime?',
-        answer: 'Our durable execution model automatically manages backoffs, exponential retries, and compensation/rollback sequences without code duplication.'
-      },
-      {
-        question: 'Can we build custom nodes in Python or TypeScript?',
-        answer: 'Yes. Write standard functions in your favorite language and import them as custom verified nodes within the studio.'
-      }
-    ],
-    specs: {
-      deployment: 'Serverless Cloud, Hybrid Edge Runners, or Dedicated Container',
-      compliance: 'SOC 2 Type II, ISO 27001, FedRAMP In-Process',
-      availability: '99.99% Pipeline Trigger & Execution SLA',
-      apiSupport: 'Webhooks, gRPC Streams, REST, Node/Python/Go SDKs'
-    },
-    status: 'active'
-  },
-  {
-    slug: 'vasuniti-cloud',
-    name: 'VasuNiti Cloud',
-    tagline: 'Resilient Infrastructure & Global Edge Network',
-    shortDescription: 'High-performance cloud infrastructure designed for modern distributed architectures, zero-downtime deployments, and edge data processing.',
-    fullDescription: 'Built from the ground up for microservices, high-traffic SaaS products, and latency-critical backends, VasuNiti Cloud offers automated multi-cloud provisioning, global edge caching, distributed database replication, and enterprise autoscaling with zero operational drag.',
-    category: 'Cloud & DevOps',
-    badge: 'Ultra-Scalable',
-    icon: 'Cloud',
-    color: '#8b5cf6',
-    order: 4,
-    featured: true,
-    capabilities: [
-      'Global Edge CDN with 300+ PoPs',
-      'Automated Zero-Downtime Blue-Green Deploys',
-      'Multi-Cloud Disaster Recovery Failover',
-      'Built-in DDoS & Web Application Firewall (WAF)',
-      'Automated Distributed Database Replication',
-      'Real-time Performance & Log Telemetry'
-    ],
-    features: [
-      {
-        title: 'Global Edge Fabric',
-        description: 'Execute compute and cache dynamic responses within 15ms of 95% of the world connected population.',
-        icon: 'Globe',
-        highlight: '<15ms Global TTFB Average'
-      },
-      {
-        title: 'Autonomous Autoscaling',
-        description: 'Scale from zero to tens of thousands of concurrent container pods in seconds based on traffic surges.',
-        icon: 'Maximize2',
-        highlight: 'Scales in <2.4 seconds'
-      },
-      {
-        title: 'Zero-Trust Network Mesh',
-        description: 'Every container, edge point, and database communication is encrypted with automatic mutual TLS (mTLS).',
-        icon: 'Lock',
-        highlight: 'Continuous posture verification'
-      },
-      {
-        title: 'Unified Observability',
-        description: 'Integrated distributed tracing, aggregated log indexing, and CPU/memory flamegraphs built in.',
-        icon: 'Activity',
-        highlight: 'Zero third-party agent overhead'
-      }
-    ],
-    benefits: [
-      {
-        metric: '99.999%',
-        label: 'Target Uptime Availability',
-        detail: 'Multi-cloud active-active routing ensures zero impact even during complete datacenter outages.'
-      },
-      {
-        metric: '60%',
-        label: 'Cost Savings on Cloud Egress',
-        detail: 'Optimized routing topology and built-in edge caching slash infrastructure bandwidth expenses.'
-      },
-      {
-        metric: '< 15ms',
-        label: 'Edge Compute Response',
-        detail: 'Proximity-based request handling delivers instant app loading across all continents.'
-      }
-    ],
-    faqs: [
-      {
-        question: 'Can VasuNiti Cloud connect to our existing AWS or Google Cloud accounts?',
-        answer: 'Yes! You can use VasuNiti Cloud as an overlay control plane managing workloads directly across your AWS, GCP, Azure, and bare-metal servers.'
-      },
-      {
-        question: 'How does deployment automation work?',
-        answer: 'Native Git integration automatically spins up preview environments for pull requests and promotes verified builds to production with zero downtime.'
-      }
-    ],
-    specs: {
-      deployment: 'Global Edge Mesh, Dedicated Bare Metal, Sovereign Cloud',
-      compliance: 'SOC 2 Type II, ISO 27001, PCI-DSS Level 1, HIPAA',
-      availability: '99.999% SLA across Multi-Region Clusters',
-      apiSupport: 'Kubernetes API, Terraform Provider, OpenTelemetry, CLI'
-    },
-    status: 'active'
-  },
-  {
-    slug: 'vasuniti-cybercore',
-    name: 'VasuNiti CyberCore',
-    tagline: 'Zero-Trust Identity, Compliance & Threat Intelligence',
-    shortDescription: 'Enterprise-grade cybersecurity platform providing continuous threat detection, identity governance, secret orchestration, and automated regulatory reporting.',
-    fullDescription: 'VasuNiti CyberCore empowers security teams to enforce zero-trust policies with granular precision. It provides behavioral threat mitigation, automated cryptographic key management, and continuous posture monitoring across all software stacks and cloud assets.',
-    category: 'Security & Compliance',
-    badge: 'Enterprise Security',
-    icon: 'Shield',
-    color: '#10b981',
-    order: 5,
-    featured: false,
-    capabilities: [
-      'Universal Zero-Trust Identity & SSO Integration',
-      'Automated Penetration & Vulnerability Scanning',
-      'Centralized Secret & Cryptographic Key Vault',
-      'Continuous Compliance Auditing (SOC2, ISO, HIPAA)',
-      'AI-Powered Behavioral Threat Detection',
-      'Automated Incident Response Runbooks'
-    ],
-    features: [
-      {
-        title: 'Dynamic Identity Mesh',
-        description: 'Contextual access evaluation based on device health, geolocation, and behavioral telemetry.',
-        icon: 'Key',
-        highlight: 'Continuous adaptive authentication'
-      },
-      {
-        title: 'Automated Compliance Engine',
-        description: 'Collects evidence automatically from cloud resources and generates audit-ready compliance dossiers.',
-        icon: 'FileCheck',
-        highlight: 'Over 80% audit preparation time saved'
-      },
-      {
-        title: 'Proactive Threat Surface Radar',
-        description: 'Monitors public repos, dark web channels, and infrastructure endpoints for leaks and misconfigurations.',
-        icon: 'Radar',
-        highlight: '24/7 automated perimeter reconnaissance'
-      }
-    ],
-    benefits: [
-      {
-        metric: '99.8%',
-        label: 'Threat Interception Rate',
-        detail: 'Proactive heuristics intercept malicious attempts before sensitive data is exposed.'
+        label: 'Reduction in Calculation Time',
+        detail: 'Automate complex mark weighting formulas across thousands of student exam answer sheets.'
       },
       {
         metric: '100%',
-        label: 'Audit Traceability',
-        detail: 'Cryptographically signed audit logs ensure absolute non-repudiation in regulatory reviews.'
+        label: 'Auditable Calculation Logic',
+        detail: 'Every attainment score provides an inspectable drill-down into source assessment questions.'
       }
     ],
     faqs: [
       {
-        question: 'Does CyberCore replace our existing SIEM or EDR tools?',
-        answer: 'CyberCore can act as your standalone security posture platform or ingest telemetry into Splunk, Datadog, or Microsoft Sentinel.'
+        question: 'Can colleges configure their own target benchmark percentages?',
+        answer: 'Yes. Institutions can set custom targets (e.g., target 70% threshold, target 65% attainment) per course or department.'
+      },
+      {
+        question: 'What direct-to-indirect weighting ratios are supported?',
+        answer: 'Any ratio can be configured. Common standards include 80% Direct + 20% Indirect, or 70% Direct + 30% Indirect.'
       }
     ],
     specs: {
-      deployment: 'Zero-Trust Cloud, Private Enclave, Air-Gapped',
-      compliance: 'SOC 2 Type II, ISO 27001, FIPS 140-3, HIPAA, GDPR',
-      availability: '99.99% Security Telemetry Pipeline SLA',
-      apiSupport: 'Syslog, CEF, OpenTelemetry, Webhooks, GraphQL'
-    },
-    status: 'active'
+      deployment: 'Secure Institutional Cloud',
+      compliance: 'Outcome-Based Education Standard',
+      availability: '99.9% High Availability',
+      apiSupport: 'CSV / Excel Bulk Import & REST APIs'
+    }
   },
   {
-    slug: 'vasuniti-devpulse',
-    name: 'VasuNiti DevPulse',
-    tagline: 'Developer Velocity, CI/CD Telemetry & API Observability',
-    shortDescription: 'Empower engineering teams with intelligent code insight, rapid deployment pipelines, live API contract testing, and developer productivity analytics.',
-    fullDescription: 'Designed by engineers for engineers, VasuNiti DevPulse streamlines the modern software delivery lifecycle. It provides end-to-end visibility into build speeds, flaky test identification, API contract monitoring, and pull request velocity.',
-    category: 'Developer Tools',
-    badge: 'Developer First',
-    icon: 'Terminal',
-    color: '#f59e0b',
-    order: 6,
-    featured: false,
+    slug: 'academic-reporting-suite',
+    name: 'NBA & NAAC Academic Reporting Suite',
+    tagline: 'Audit-Ready Reports and Institutional Dossiers',
+    shortDescription: 'Generate standardized, committee-ready CO–PO mapping summaries, attainment dossiers, and continuous quality improvement records in seconds.',
+    fullDescription: 'Transform months of frantic accreditation preparation into a continuous, effortless workflow. VasuNiti synthesizes course data, faculty mappings, student assessments, and department reviews into audit-ready PDF and Excel dossiers formatted for NBA SAR Criterion 2 & 3 and NAAC Criterion 1 & 2.6.',
+    category: 'Security & Compliance',
+    badge: 'Accreditation Readiness',
+    icon: 'FileCheck',
+    color: '#4F7CFF',
+    order: 3,
+    featured: true,
     capabilities: [
-      'Ultra-Fast Distributed CI/CD Cache Mesh',
-      'Automated API Contract Testing & Mocking',
-      'Flaky Test Detection & Smart Retries',
-      'DORA Metrics & Engineering Health Analytics',
-      'Ephemeral Feature Branch Previews',
-      'SDK Generation for 12+ Languages'
+      'One-click NBA Criterion 3.1, 3.2, and 3.3 summary tables',
+      'NAAC Criterion 2.6.1 & 2.6.2 learning outcome reports',
+      'Departmental Programme Outcome attainment profiles',
+      'Continuous Quality Improvement (CQI) action records',
+      'Export to formatted PDF dossiers and Excel workbooks',
+      'Digitally signed academic approvals & audit trails'
     ],
     features: [
       {
-        title: 'Intelligent Build Accelerator',
-        description: 'Share compiled artifacts across the entire engineering team to reduce build times by up to 80%.',
-        icon: 'FastForward',
-        highlight: 'Remote cache hit rates > 85%'
+        title: 'SAR-Aligned Matrix Exporter',
+        description: 'Export Course-to-PO correlation tables with the exact column formatting required by accreditation manuals.',
+        icon: 'Download',
+        highlight: 'Ready for print & committee binder'
       },
       {
-        title: 'Live API Contract Guardian',
-        description: 'Detect breaking changes in schemas and endpoints before pull requests are merged into production.',
-        icon: 'Code2',
-        highlight: 'Zero unintended breaking changes'
+        title: 'Attainment Differential Graphs',
+        description: 'High-contrast bar charts comparing attainment over 3 consecutive academic years.',
+        icon: 'BarChart2',
+        highlight: 'Visually compelling audit presentations'
       },
       {
-        title: 'DORA Velocity Telemetry',
-        description: 'Track Lead Time, Deployment Frequency, MTTR, and Change Failure Rate in real-time.',
-        icon: 'BarChart3',
-        highlight: 'Actionable bottleneck suggestions'
+        title: 'Continuous Quality Improvement (CQI)',
+        description: 'Track documented faculty actions for weak outcomes and verify if improvement occurred next term.',
+        icon: 'RefreshCw',
+        highlight: 'Closed-loop pedagogical feedback'
+      },
+      {
+        title: 'Institutional Archival System',
+        description: 'Store multi-year academic records with immutable timestamps for re-accreditation cycles.',
+        icon: 'Archive',
+        highlight: '5-year historical preservation'
       }
     ],
     benefits: [
       {
-        metric: '4.5x',
-        label: 'Faster Build & Deploy Cycles',
-        detail: 'Distributed compilation caching cuts developer wait times from hours to minutes.'
+        metric: '70%+',
+        label: 'Less Documentation Stress',
+        detail: 'Eliminate eleventh-hour panic before accreditation committee peer visits.'
       },
       {
-        metric: '72%',
-        label: 'Reduction in API Regressions',
-        detail: 'Automated contract verification prevents downstream microservice breakages.'
+        metric: '100%',
+        label: 'Transparent Audit Traceability',
+        detail: 'Instantly retrieve question papers and rubrics supporting any reported figure.'
       }
     ],
     faqs: [
       {
-        question: 'Does DevPulse integrate with GitHub Actions, GitLab, and Jenkins?',
-        answer: 'Yes! DevPulse acts as a drop-in accelerator with standard plugins for GitHub Actions, GitLab CI, Bitbucket, and Jenkins.'
+        question: 'Does VasuNiti guarantee accreditation approval?',
+        answer: 'No software can guarantee accreditation. VasuNiti provides the rigorous data organization, calculation infrastructure, and report generation that supports institutional quality assurance workflows.'
       }
     ],
     specs: {
-      deployment: 'Cloud SaaS, Hybrid Build Runners, On-Premise',
-      compliance: 'SOC 2 Type II, ISO 27001',
-      availability: '99.95% Build Telemetry SLA',
-      apiSupport: 'CLI, Webhooks, GitHub App, VSCode & JetBrains Extensions'
-    },
-    status: 'active'
+      deployment: 'Enterprise Cloud',
+      compliance: 'Aligned to NBA Tier-I & Tier-II manuals',
+      availability: '99.95% Enterprise SLA',
+      apiSupport: 'Export to PDF, XLSX, and JSON'
+    }
+  },
+  {
+    slug: 'evidence-vault',
+    name: 'Digital Course File & Evidence Vault',
+    tagline: 'Structured Repository for Academic Records & Rubrics',
+    shortDescription: 'Organize course files, question papers tagged to COs, evaluation rubrics, and sample student answer scripts in a tamper-proof digital archive.',
+    fullDescription: 'Say goodbye to dusty physical ring-binders and scattered Google Drive folders. The VasuNiti Digital Course File & Evidence Vault provides a structured, role-governed digital folder for every course offering—linking syllabus, lesson plans, question papers, rubrics, and high/average/low sample scripts directly to course outcomes.',
+    category: 'Workflow & Automation',
+    badge: 'Digital Governance',
+    icon: 'FolderArchive',
+    color: '#16A34A',
+    order: 4,
+    featured: false,
+    capabilities: [
+      'Digital Course File 14-item standard checklist',
+      'Direct linking of question papers to Bloom’s levels & COs',
+      'Rubrics for laboratory experiments, mini-projects, and seminars',
+      'Sample answer script digital repository (High, Average, Low)',
+      'HOD review and digital sign-off workflow',
+      'Secure encrypted cloud storage with role-based permissions'
+    ],
+    features: [
+      {
+        title: 'Standardized Course File Structure',
+        description: 'Pre-built templates conforming to institutional IQAC quality audit standards.',
+        icon: 'CheckSquare',
+        highlight: 'Complete syllabus-to-exam dossier'
+      },
+      {
+        title: 'Question Paper Quality Audit',
+        description: 'Verify Bloom’s taxonomy distribution and CO coverage across internal question papers.',
+        icon: 'Sliders',
+        highlight: 'Balanced assessment verification'
+      },
+      {
+        title: 'Rubrics Engine',
+        description: 'Define clear multi-level rubrics for lab practicals, capstone projects, and presentations.',
+        icon: 'Award',
+        highlight: 'Objective qualitative assessment'
+      },
+      {
+        title: 'HOD Approval Workflow',
+        description: 'Formal digital sign-off and feedback loop between department heads and course instructors.',
+        icon: 'UserCheck',
+        highlight: 'Built-in revision requests'
+      }
+    ],
+    benefits: [
+      {
+        metric: '100%',
+        label: 'Digitized Course Records',
+        detail: 'Replace heavy physical folders with searchable, structured digital portfolios.'
+      },
+      {
+        metric: 'Instant',
+        label: 'Peer Review Verification',
+        detail: 'Audit committees can inspect any sample script or rubric with a single click.'
+      }
+    ],
+    faqs: [
+      {
+        question: 'Can our college customize the course file checklist?',
+        answer: 'Yes. Academic administrators can tailor the checklist items (e.g., adding lab manuals, guest lecture reports, or remedial class logs) to match institutional IQAC guidelines.'
+      }
+    ],
+    specs: {
+      deployment: 'High-Durability Cloud Object Storage',
+      compliance: 'Encrypted in transit and at rest',
+      availability: '99.9% Uptime',
+      apiSupport: 'Direct PDF, DOCX, and Scan upload'
+    }
   }
 ];

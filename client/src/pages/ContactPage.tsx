@@ -1,27 +1,44 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Sparkles, Building, User } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Sparkles, Building2, User, HelpCircle, Calendar, GraduationCap } from 'lucide-react';
 import confetti from 'canvas-confetti';
 import { submitContactForm } from '../services/api';
-import { ContactFormData } from '../types';
 import { companyData } from '../data/companyData';
 import { SEOHead } from '../components/common/SEOHead';
-import { Badge } from '../components/common/Badge';
-import { Button } from '../components/common/Button';
 
 export const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState<ContactFormData>({
+  const [formData, setFormData] = useState({
     name: '',
     email: '',
-    company: '',
+    institution: '',
+    designation: 'IQAC Coordinator',
     phone: '',
-    subject: 'General Inquiry',
+    interest: 'Complete OBE & CO-PO Platform',
     message: '',
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const designations = [
+    'College Principal / Director',
+    'IQAC Coordinator / Director',
+    'NBA / NAAC Coordinator',
+    'Head of Department (HOD)',
+    'Dean of Academics',
+    'Professor / Course Faculty',
+    'Academic Registrar / Admin',
+    'Other'
+  ];
+
+  const interestAreas = [
+    'Complete OBE & CO-PO Platform',
+    'CO–PO–PSO Mapping Engine',
+    'Outcome Attainment Analytics (Direct & Indirect)',
+    'NBA & NAAC Documentation Support',
+    'Digital Course File & Evidence Vault'
+  ];
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData((prev) => ({
@@ -35,27 +52,41 @@ export const ContactPage: React.FC = () => {
     setErrorMessage(null);
     setSuccessMessage(null);
 
-    // Frontend validation
+    // Validation
     if (!formData.name.trim() || formData.name.trim().length < 2) {
       setErrorMessage('Please enter your full name (at least 2 characters).');
       return;
     }
 
-    const emailRegex = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.email.trim() || !emailRegex.test(formData.email.trim())) {
-      setErrorMessage('Please enter a valid email address.');
+      setErrorMessage('Please enter a valid official/institutional email address.');
       return;
     }
 
-    if (!formData.message.trim() || formData.message.trim().length < 10) {
-      setErrorMessage('Please provide a message with at least 10 characters.');
+    if (!formData.institution.trim() || formData.institution.trim().length < 3) {
+      setErrorMessage('Please provide your college or university name.');
+      return;
+    }
+
+    if (!formData.phone.trim() || formData.phone.trim().length < 7) {
+      setErrorMessage('Please enter a valid contact phone number.');
       return;
     }
 
     setIsSubmitting(true);
 
     try {
-      const res = await submitContactForm(formData);
+      const payload = {
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        company: `${formData.institution.trim()} (${formData.designation})`,
+        phone: formData.phone.trim(),
+        subject: `Institutional Demo Request: ${formData.interest}`,
+        message: `Institution: ${formData.institution}\nDesignation: ${formData.designation}\nArea of Interest: ${formData.interest}\nMessage: ${formData.message || 'Standard demonstration requested.'}`,
+      };
+
+      const res = await submitContactForm(payload);
       setIsSubmitting(false);
       setSuccessMessage(res.message);
 
@@ -64,256 +95,325 @@ export const ContactPage: React.FC = () => {
         particleCount: 80,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#3888ff', '#6366f1', '#06b6d4'],
+        colors: ['#315FEA', '#4F7CFF', '#14213D', '#16A34A'],
       });
 
       // Reset form
       setFormData({
         name: '',
         email: '',
-        company: '',
+        institution: '',
+        designation: 'IQAC Coordinator',
         phone: '',
-        subject: 'General Inquiry',
+        interest: 'Complete OBE & CO-PO Platform',
         message: '',
       });
     } catch (err: any) {
       setIsSubmitting(false);
-      setErrorMessage(err.message || 'Failed to submit message. Please try again.');
+      setErrorMessage(err.message || 'Failed to submit request. Please try again.');
     }
   };
 
   return (
     <>
       <SEOHead
-        title="Contact VasuNiti — Let's Build Something Meaningful"
-        description="Connect with VasuNiti. Speak with our enterprise solutions team about product demos, partnerships, or custom architectures."
+        title="Contact VasuNiti — Request an Institutional OBE Software Demonstration"
+        description="Schedule a product walkthrough with VasuNiti's academic solutions team. Streamline CO–PO mapping and outcome attainment for your engineering college or university."
       />
 
-      <div className="pt-32 pb-24 min-h-screen">
+      <div className="pt-32 pb-24 min-h-screen bg-white dark:bg-[#050814] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <Badge variant="brand" className="mb-3">
-              Direct Access
-            </Badge>
-            <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-              Let's Build Something Meaningful.
+            <span className="inline-block px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-xs font-bold uppercase tracking-wider mb-3">
+              Institutional Engagement
+            </span>
+            <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
+              Book a Free <span className="bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 dark:from-blue-400 dark:via-indigo-300 dark:to-violet-400 bg-clip-text text-transparent">Institutional Demo</span>
             </h1>
-            <p className="mt-4 text-base sm:text-lg text-slate-600 dark:text-slate-300">
-              Have an idea, a challenge, or a business problem? Let's talk.
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 leading-relaxed">
+              Discover how VasuNiti can adapt to your institution’s academic regulations, course schemes, and accreditation documentation timeline.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
-            {/* Left Contact Info & Direct Channels */}
-            <div className="lg:col-span-5 space-y-8">
-              <div className="p-8 rounded-3xl bg-white dark:bg-dark-card border border-black/[0.08] dark:border-white/[0.08] shadow-sm space-y-6">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
+            
+            {/* Left: Interactive Demo Request Form (7 cols on lg) */}
+            <div className="lg:col-span-7 bg-slate-50/70 dark:bg-[#0E1526] rounded-3xl border border-slate-200/90 dark:border-white/[0.08] p-8 sm:p-10 shadow-sm transition-colors">
+              <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-200/90 dark:border-white/[0.08]">
+                <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-violet-600 text-white flex items-center justify-center shadow-lg shadow-indigo-600/30 border border-white/20">
+                  <Calendar className="w-5 h-5" />
+                </div>
                 <div>
-                  <h3 className="font-display text-xl font-bold text-slate-900 dark:text-white mb-2">
-                    Enterprise Sales & Partnerships
-                  </h3>
-                  <p className="text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
-                    Our solutions engineers are available for architecture reviews, pilot deployments, and custom enterprise licensing.
+                  <h2 className="font-display text-xl font-bold text-slate-900 dark:text-white">
+                    Schedule Your Walkthrough
+                  </h2>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    Customized demonstration for your Principal, IQAC, and HODs
                   </p>
                 </div>
-
-                <div className="space-y-4 text-sm text-slate-700 dark:text-slate-300">
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-brand-500/10 text-brand-500">
-                      <Mail className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-[11px] font-mono text-slate-400">EMAIL INQUIRIES</div>
-                      <a href="mailto:contact@vasuniti.com" className="font-medium hover:text-brand-500 transition-colors">
-                        contact@vasuniti.com
-                      </a>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-emerald-500/10 text-emerald-500">
-                      <Phone className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-[11px] font-mono text-slate-400">PHONE</div>
-                      <span className="font-medium">+1 (800) 555-VASU</span>
-                    </div>
-                  </div>
-
-                  <div className="flex items-center gap-3">
-                    <div className="p-2.5 rounded-xl bg-indigo-500/10 text-indigo-500">
-                      <MapPin className="w-4 h-4" />
-                    </div>
-                    <div>
-                      <div className="text-[11px] font-mono text-slate-400">HEADQUARTERS</div>
-                      <span className="font-medium">San Francisco, CA & Bengaluru, India</span>
-                    </div>
-                  </div>
-                </div>
               </div>
 
-              {/* Response SLA Note */}
-              <div className="p-6 rounded-2xl bg-brand-500/5 dark:bg-brand-500/10 border border-brand-500/20 text-xs text-slate-600 dark:text-slate-300 space-y-2">
-                <div className="flex items-center gap-2 font-semibold text-brand-600 dark:text-brand-400">
-                  <Sparkles className="w-4 h-4" />
-                  <span>Guaranteed 24-Hour Response</span>
+              {successMessage ? (
+                <div className="text-center py-10 px-4">
+                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center mb-4">
+                    <CheckCircle2 className="w-10 h-10" />
+                  </div>
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-display mb-2">
+                    Demonstration Request Received!
+                  </h3>
+                  <p className="text-sm text-slate-600 dark:text-slate-300 max-w-md mx-auto mb-6 leading-relaxed">
+                    {successMessage}
+                  </p>
+                  <button
+                    type="button"
+                    onClick={() => setSuccessMessage(null)}
+                    className="px-6 py-2.5 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white text-xs font-semibold hover:from-blue-500 hover:to-violet-500 transition-all shadow-md shadow-indigo-600/25"
+                  >
+                    Submit Another Inquiry
+                  </button>
                 </div>
-                <p className="leading-relaxed">
-                  Every inquiry is directly reviewed by an engineering lead and assigned a dedicated technical specialist.
-                </p>
-              </div>
-            </div>
+              ) : (
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {errorMessage && (
+                    <div className="p-3.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800/60 rounded-xl flex items-center gap-2.5 text-xs text-red-700 dark:text-red-300">
+                      <AlertCircle className="w-4 h-4 flex-shrink-0" />
+                      <span>{errorMessage}</span>
+                    </div>
+                  )}
 
-            {/* Right Interactive Form */}
-            <div className="lg:col-span-7">
-              <div className="p-8 sm:p-10 rounded-3xl bg-white dark:bg-dark-card border border-black/[0.08] dark:border-white/[0.08] shadow-xl relative overflow-hidden">
-                <form onSubmit={handleSubmit} className="space-y-5">
-                  {/* Status Alerts */}
-                  <AnimatePresence>
-                    {successMessage && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        className="p-4 rounded-xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-700 dark:text-emerald-400 text-sm flex items-start gap-3"
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Full Name */}
+                    <div>
+                      <label htmlFor="contact-name" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                        Full Name <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <User className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+                        <input
+                          id="contact-name"
+                          name="name"
+                          type="text"
+                          required
+                          value={formData.name}
+                          onChange={handleChange}
+                          placeholder="Dr. Anand Deshmukh"
+                          className="w-full pl-10 pr-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-white/10 bg-white dark:bg-[#131C31] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Official Email */}
+                    <div>
+                      <label htmlFor="contact-email" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                        Official / College Email <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <Mail className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+                        <input
+                          id="contact-email"
+                          name="email"
+                          type="email"
+                          required
+                          value={formData.email}
+                          onChange={handleChange}
+                          placeholder="principal@college.edu"
+                          className="w-full pl-10 pr-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-white/10 bg-white dark:bg-[#131C31] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* College / Institution Name */}
+                    <div>
+                      <label htmlFor="contact-institution" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                        College / University Name <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <Building2 className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+                        <input
+                          id="contact-institution"
+                          name="institution"
+                          type="text"
+                          required
+                          value={formData.institution}
+                          onChange={handleChange}
+                          placeholder="Institute of Technology"
+                          className="w-full pl-10 pr-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-white/10 bg-white dark:bg-[#131C31] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Phone Number */}
+                    <div>
+                      <label htmlFor="contact-phone" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                        Phone Number <span className="text-red-500">*</span>
+                      </label>
+                      <div className="relative">
+                        <Phone className="w-4 h-4 text-slate-400 absolute left-3.5 top-3" />
+                        <input
+                          id="contact-phone"
+                          name="phone"
+                          type="tel"
+                          required
+                          value={formData.phone}
+                          onChange={handleChange}
+                          placeholder="+91 98220 12345"
+                          className="w-full pl-10 pr-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-white/10 bg-white dark:bg-[#131C31] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
+                        />
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    {/* Designation */}
+                    <div>
+                      <label htmlFor="contact-designation" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                        Designation / Role <span className="text-red-500">*</span>
+                      </label>
+                      <select
+                        id="contact-designation"
+                        name="designation"
+                        value={formData.designation}
+                        onChange={handleChange}
+                        className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-white/10 bg-white dark:bg-[#131C31] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
                       >
-                        <CheckCircle2 className="w-5 h-5 shrink-0 mt-0.5" />
-                        <span>{successMessage}</span>
-                      </motion.div>
-                    )}
+                        {designations.map((d) => (
+                          <option key={d} value={d} className="bg-white dark:bg-[#0E1526]">{d}</option>
+                        ))}
+                      </select>
+                    </div>
 
-                    {errorMessage && (
-                      <motion.div
-                        initial={{ opacity: 0, y: -10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0 }}
-                        className="p-4 rounded-xl bg-red-500/10 border border-red-500/30 text-red-700 dark:text-red-400 text-sm flex items-start gap-3"
+                    {/* Area of Interest */}
+                    <div>
+                      <label htmlFor="contact-interest" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                        Primary Area of Interest
+                      </label>
+                      <select
+                        id="contact-interest"
+                        name="interest"
+                        value={formData.interest}
+                        onChange={handleChange}
+                        className="w-full px-3.5 py-2.5 rounded-xl text-sm border border-slate-300 dark:border-white/10 bg-white dark:bg-[#131C31] text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all"
                       >
-                        <AlertCircle className="w-5 h-5 shrink-0 mt-0.5" />
-                        <span>{errorMessage}</span>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    {/* Name */}
-                    <div>
-                      <label className="block text-xs font-mono font-semibold uppercase text-slate-700 dark:text-slate-300 mb-2">
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        placeholder="John Doe"
-                        className="w-full px-4 py-3 rounded-xl text-sm bg-light-surface dark:bg-dark-bg border border-black/10 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/50"
-                      />
-                    </div>
-
-                    {/* Email */}
-                    <div>
-                      <label className="block text-xs font-mono font-semibold uppercase text-slate-700 dark:text-slate-300 mb-2">
-                        Work Email *
-                      </label>
-                      <input
-                        type="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        placeholder="john@company.com"
-                        className="w-full px-4 py-3 rounded-xl text-sm bg-light-surface dark:bg-dark-bg border border-black/10 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/50"
-                      />
+                        {interestAreas.map((item) => (
+                          <option key={item} value={item} className="bg-white dark:bg-[#0E1526]">{item}</option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                    {/* Company */}
-                    <div>
-                      <label className="block text-xs font-mono font-semibold uppercase text-slate-700 dark:text-slate-300 mb-2">
-                        Company Name
-                      </label>
-                      <input
-                        type="text"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        placeholder="Acme Corp"
-                        className="w-full px-4 py-3 rounded-xl text-sm bg-light-surface dark:bg-dark-bg border border-black/10 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/50"
-                      />
-                    </div>
-
-                    {/* Phone */}
-                    <div>
-                      <label className="block text-xs font-mono font-semibold uppercase text-slate-700 dark:text-slate-300 mb-2">
-                        Phone (Optional)
-                      </label>
-                      <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        placeholder="+1 (555) 000-0000"
-                        className="w-full px-4 py-3 rounded-xl text-sm bg-light-surface dark:bg-dark-bg border border-black/10 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/50"
-                      />
-                    </div>
-                  </div>
-
-                  {/* Subject Inquiry Type */}
+                  {/* Optional Message */}
                   <div>
-                    <label className="block text-xs font-mono font-semibold uppercase text-slate-700 dark:text-slate-300 mb-2">
-                      Inquiry Type
-                    </label>
-                    <select
-                      name="subject"
-                      value={formData.subject}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 rounded-xl text-sm bg-light-surface dark:bg-dark-bg border border-black/10 dark:border-white/10 text-slate-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-brand-500/50"
-                    >
-                      <option value="General Inquiry">General Inquiry</option>
-                      <option value="Product Demo">Product Demo Request</option>
-                      <option value="Enterprise Partnership">Enterprise Partnership</option>
-                      <option value="Technical Support">Technical Support</option>
-                      <option value="Custom Solution">Custom Architectural Solution</option>
-                      <option value="Investor Relations">Investor Relations</option>
-                    </select>
-                  </div>
-
-                  {/* Message */}
-                  <div>
-                    <label className="block text-xs font-mono font-semibold uppercase text-slate-700 dark:text-slate-300 mb-2">
-                      Message *
+                    <label htmlFor="contact-message" className="block text-xs font-semibold text-slate-700 dark:text-slate-300 mb-1.5">
+                      Specific Requirements, Departments, or Upcoming Audit Dates (Optional)
                     </label>
                     <textarea
+                      id="contact-message"
                       name="message"
-                      rows={5}
-                      required
+                      rows={3}
                       value={formData.message}
                       onChange={handleChange}
-                      placeholder="Describe your project, workflow challenges, or timeline..."
-                      className="w-full px-4 py-3 rounded-xl text-sm bg-light-surface dark:bg-dark-bg border border-black/10 dark:border-white/10 text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-brand-500/50 resize-none"
+                      placeholder="e.g., Preparing NBA Self Assessment Report for CSE & ECE departments; autonomous regulation scheme 2024."
+                      className="w-full px-3.5 py-2 rounded-xl text-sm border border-slate-300 dark:border-white/10 bg-white dark:bg-[#131C31] text-slate-900 dark:text-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition-all resize-none"
                     />
                   </div>
 
-                  {/* Submit Button */}
-                  <Button
-                    type="submit"
-                    variant="primary"
-                    size="lg"
-                    isLoading={isSubmitting}
-                    className="w-full shadow-glow-sm"
-                    rightIcon={<Send className="w-4 h-4" />}
-                  >
-                    Start a Conversation
-                  </Button>
+                  <div className="pt-2">
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="w-full py-3.5 px-6 rounded-xl bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:via-indigo-500 hover:to-violet-500 text-white font-semibold text-sm transition-all duration-200 shadow-lg shadow-indigo-600/30 hover:shadow-indigo-600/50 hover:-translate-y-0.5 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none flex items-center justify-center gap-2"
+                    >
+                      {isSubmitting ? (
+                        <span>Submitting Demo Request...</span>
+                      ) : (
+                        <>
+                          <Send className="w-4 h-4" />
+                          <span>Request Institutional Demo</span>
+                        </>
+                      )}
+                    </button>
+                    <p className="text-[11px] text-center text-slate-500 dark:text-slate-400 mt-2.5">
+                      Our academic solutions consultants will respond within 24 hours to schedule your session.
+                    </p>
+                  </div>
                 </form>
-              </div>
+              )}
             </div>
+
+            {/* Right: Contact Information & Institutional FAQ (5 cols on lg) */}
+            <div className="lg:col-span-5 space-y-6">
+              
+              {/* Direct Institutional Channels */}
+              <div className="rounded-3xl bg-gradient-to-br from-blue-950 via-indigo-950 to-slate-950 text-white p-7 sm:p-8 border border-white/10 shadow-xl relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
+                <h3 className="font-display text-lg font-bold text-white mb-5 relative">
+                  Institutional Inquiries & Support
+                </h3>
+
+                <div className="space-y-4 text-xs text-slate-300 relative">
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-blue-500/20 text-blue-400 flex items-center justify-center flex-shrink-0 border border-blue-500/30">
+                      <Mail className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-slate-400 block text-[11px]">Academic Inquiries</span>
+                      <strong className="text-white text-sm">{companyData.inquiryEmail}</strong>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-indigo-500/20 text-indigo-400 flex items-center justify-center flex-shrink-0 border border-indigo-500/30">
+                      <Phone className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-slate-400 block text-[11px]">Helpline & Consultation</span>
+                      <strong className="text-white text-sm">{companyData.phone}</strong>
+                    </div>
+                  </div>
+
+                  <div className="flex items-start gap-3">
+                    <div className="w-9 h-9 rounded-xl bg-violet-500/20 text-violet-400 flex items-center justify-center flex-shrink-0 border border-violet-500/30">
+                      <MapPin className="w-4 h-4" />
+                    </div>
+                    <div>
+                      <span className="text-slate-400 block text-[11px]">Higher-Ed Solutions Centers</span>
+                      <div className="text-white text-xs mt-0.5">
+                        {companyData.locations.map((loc) => (
+                          <div key={loc.city} className="mb-1">
+                            <strong>{loc.city}:</strong> {loc.address} ({loc.type})
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* What Happens Next Card */}
+              <div className="rounded-2xl bg-white dark:bg-[#0E1526] p-6 sm:p-7 border border-slate-200/90 dark:border-white/[0.08] shadow-sm">
+                <h4 className="font-display font-bold text-sm text-slate-900 dark:text-white mb-3.5 flex items-center gap-2">
+                  <Sparkles className="w-4 h-4 text-indigo-600 dark:text-indigo-400" />
+                  What Happens After You Request a Demo?
+                </h4>
+                <ol className="space-y-3 text-xs sm:text-sm text-slate-600 dark:text-slate-300 list-decimal pl-4 leading-relaxed">
+                  <li><strong>Preliminary Consultation:</strong> We understand your current syllabus scheme, regulations, and accreditation goals.</li>
+                  <li><strong>Custom Demo Session:</strong> We showcase live mapping and attainment calculations customized to your engineering branch.</li>
+                  <li><strong>Sample Dossier Review:</strong> We share sample exported NBA SAR & NAAC dossiers for your IQAC team to inspect.</li>
+                </ol>
+              </div>
+
+            </div>
+
           </div>
+
         </div>
       </div>
     </>
   );
 };
+
+export default ContactPage;

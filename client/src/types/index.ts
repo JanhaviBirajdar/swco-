@@ -66,25 +66,49 @@ export interface Solution {
 export interface ContactFormData {
   name: string;
   email: string;
-  company: string;
-  phone: string;
-  subject: string;
+  company?: string;
+  institution?: string;
+  phone?: string;
+  subject?: string;
   message: string;
 }
 
-export interface Testimonial {
-  quote: string;
-  author: string;
-  role: string;
-  company: string;
-  metric: string;
-  metricLabel: string;
+export interface DemoFormData {
+  name: string;
+  email: string;
+  institution: string;
+  designation: string;
+  phone: string;
+  interest: string;
+  message?: string;
 }
 
-export interface LeadershipMember {
-  name: string;
-  role: string;
-  bio: string;
-  expertise: string[];
-  imagePlaceholderColor: string;
+export interface COItem {
+  id: string;
+  code: string;
+  title: string;
+  bloomsLevel: string;
+  description: string;
+  targetAttainment: number; // e.g. 70%
+  actualAttainment: number; // e.g. 74.5%
+}
+
+export interface POItem {
+  id: string;
+  code: string;
+  title: string;
+  shortTitle: string;
+  description: string;
+  targetAttainment: number;
+  actualAttainment: number;
+}
+
+export interface MappingMatrixData {
+  coList: COItem[];
+  poList: POItem[];
+  matrix: {
+    [coId: string]: {
+      [poId: string]: number; // 0, 1, 2, 3
+    };
+  };
 }

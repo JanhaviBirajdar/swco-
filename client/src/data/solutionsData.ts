@@ -3,94 +3,94 @@ import { Solution } from '../types';
 export const solutionsData: Solution[] = [
   {
     id: 'sol-1',
-    slug: 'enterprise-modernization',
-    title: 'Enterprise Modernization & Core Migration',
-    tagline: 'De-risk legacy migrations and build a composable event-driven software foundation.',
-    category: 'Architecture & Transformation',
-    description: 'Break monolithic bottlenecks and modernize core transaction engines without taking your business offline. We engineer high-throughput microservices, multi-region database sync, and zero-downtime cutover workflows.',
-    targetAudience: 'CTOs, VP of Engineering, Enterprise Architects',
-    icon: 'Layers',
-    color: '#3888ff',
+    slug: 'engineering-obe-transformation',
+    title: 'Autonomous Colleges & University OBE Transformation',
+    tagline: 'Implement a comprehensive Outcome-Based Education system with zero spreadsheet friction.',
+    category: 'Curriculum & Governance',
+    description: 'Transition your autonomous or affiliated engineering institution from syllabus-focused tracking to a living Outcome-Based Education framework aligned with AICTE and Washington Accord benchmarks.',
+    targetAudience: 'Principals, Deans of Academics, Curriculum Chairs',
+    icon: 'GraduationCap',
+    color: '#315FEA',
     keyOutcomes: [
-      'Zero-downtime blue/green database synchronization',
-      'Up to 70% reduction in legacy infrastructure maintenance fees',
-      'Event-driven decoupling enabling independent team deployments',
-      'SOC2 and ISO 27001 compliant architecture templates'
+      'Standardized Bloom’s-compliant Course Outcomes across all departments',
+      'Systematic correlation to 12 National Graduate Attributes (PO1–PO12)',
+      'Automated batch progression and curriculum revision versioning',
+      'Unified institutional governance cockpit for academic review committees'
     ],
-    technologies: ['React', 'Node.js', 'VasuNiti Cloud', 'Apache Kafka', 'Distributed SQL', 'OpenTelemetry'],
+    technologies: ['VasuNiti Mapping Engine', 'Attainment Matrix', 'Multi-tenant College Hierarchy', 'Role-Based Access Control'],
     caseStudySnippet: {
-      clientType: 'Global Logistics Conglomerate',
-      result: 'Transitioned 14 legacy ERP modules into an interconnected event mesh with 0 seconds of unplanned downtime.',
-      impact: '10x release velocity increase'
+      clientType: 'Autonomous Engineering College (Pune)',
+      result: 'Standardized CO–PO correlation and question rubrics across 9 engineering departments for 4,200 students.',
+      impact: '100% digital course file compliance before academic peer review'
     }
   },
   {
     id: 'sol-2',
-    slug: 'intelligent-automation',
-    title: 'Intelligent Process Automation & AI Agents',
-    tagline: 'Augment human teams with deterministic state machines and verified AI agents.',
-    category: 'Operations & AI',
-    description: 'Automate high-volume back-office decisions, multi-party reconciliations, invoice extractions, and customer claims processing with rigorous guardrails and human-in-the-loop validation.',
-    targetAudience: 'Chief Operating Officers, Heads of Digital Transformation',
-    icon: 'Bot',
-    color: '#6366f1',
+    slug: 'nba-naac-accreditation-readiness',
+    title: 'IQAC, NBA & NAAC Accreditation Workflow Support',
+    tagline: 'Produce audit-ready outcome attainment dossiers and eliminate eleventh-hour document panic.',
+    category: 'Accreditation & Quality Assurance',
+    description: 'Structure, calculate, and document outcome attainment for NBA SAR Criterion 2 & 3 and NAAC Criterion 1 & 2.6 with verified calculation logic, qualitative rubrics, and continuous quality improvement records.',
+    targetAudience: 'IQAC Coordinators, NBA / NAAC Steering Committee Heads',
+    icon: 'Award',
+    color: '#14213D',
     keyOutcomes: [
-      '85% reduction in manual document handling and data verification',
-      'Sub-second deterministic rule execution with audit non-repudiation',
-      'AI agents constrained by strict enterprise security boundaries',
-      'Continuous telemetry on automated ROI and time savings'
+      'Exportable SAR-ready Course-PO mapping tables and attainment matrices',
+      'Consolidated multi-year attainment profiles (3 consecutive graduating batches)',
+      'Traceable drill-down from macro attainment scores to individual exam questions',
+      'Closed-loop Continuous Quality Improvement (CQI) documentation'
     ],
-    technologies: ['VasuNiti Automation', 'Python AI SDK', 'OCR & LLM Pipeline', 'Temporal State Machines'],
+    technologies: ['NBA Criterion 3 Generator', 'NAAC 2.6 Dossier Builder', 'Attainment Variance Engine'],
     caseStudySnippet: {
-      clientType: 'Tier-1 Insurance Provider',
-      result: 'Automated 1.2M annual claims reconciliations with 99.7% first-pass accuracy.',
-      impact: '4.2x faster claim resolution'
+      clientType: 'State University Affiliated College (Karnataka)',
+      result: 'Streamlined documentation for 5 eligible engineering programmes during their NBA re-accreditation cycle.',
+      impact: 'Eliminated manual calculation errors across 350+ semester course offerings'
     }
   },
   {
     id: 'sol-3',
-    slug: 'real-time-data-fabric',
-    title: 'Unified Real-Time Data Fabric & Analytics',
-    tagline: 'Deliver sub-second operational telemetry and predictive foresight to executive leadership.',
-    category: 'Data & Intelligence',
-    description: 'Stop waiting for overnight ETL batch jobs. VasuNiti connects operational datastores, clickstreams, and financial systems into a low-latency analytics fabric that alerts teams before anomalies become crises.',
-    targetAudience: 'Chief Data Officers, VP of Analytics, Strategy Directors',
-    icon: 'Activity',
-    color: '#06b6d4',
+    slug: 'hod-faculty-outcome-automation',
+    title: 'HOD & Faculty Workload Reduction',
+    tagline: 'Replace complex Excel sheets with fast, intuitive course mapping and attainment tools.',
+    category: 'Faculty Experience',
+    description: 'Empower teaching faculty with quick matrix inputs, Bloom’s taxonomy verb suggestions, question-to-CO tagging, and automated exit survey computation so they can focus on classroom instruction.',
+    targetAudience: 'Heads of Departments (HODs), Professors, Assistant Professors',
+    icon: 'Users',
+    color: '#4F7CFF',
     keyOutcomes: [
-      'Sub-50ms query response times across multi-billion-row datasets',
-      'Standardized semantic metric definitions eliminating divergent KPIs',
-      'Automated executive briefings and anomaly detection alerts',
-      'Seamless federated querying without data duplication costs'
+      'Effortless question-paper rubric creation with Bloom’s level distribution',
+      'Direct calculation from continuous internal evaluation (CIE) and semester exams',
+      'Built-in digital course exit surveys converted into indirect attainment',
+      'Immediate identification of students needing remedial attention'
     ],
-    technologies: ['VasuNiti Analytics', 'Apache Arrow Flight', 'ClickHouse', 'PostgreSQL Wire', 'GraphQL'],
+    technologies: ['Faculty Portal', 'Bloom’s Taxonomy Assistant', 'Automated Mark Ingestion', 'Course File Vault'],
     caseStudySnippet: {
-      clientType: 'Fintech Payment Gateway',
-      result: 'Unified live transaction telemetry across 4 continents to catch payment routing degradation instantaneously.',
-      impact: 'Saved $2.4M in potential failed routing transactions'
+      clientType: 'Department of Computer Science & Engineering',
+      result: 'Reduced semester-end attainment computation time from 3 weeks of manual work to under 2 hours per faculty.',
+      impact: 'Faculty satisfaction increased with zero broken Excel formulas'
     }
   },
   {
     id: 'sol-4',
-    slug: 'cloud-infrastructure-resilience',
-    title: 'Mission-Critical Cloud Infrastructure & Edge Mesh',
-    tagline: 'Scale to global millions with active-active multi-region reliability and hardened perimeter security.',
-    category: 'Cloud & Security',
-    description: 'Ensure your customer-facing applications remain responsive during unpredictable traffic spikes, regional outages, or sophisticated DDoS attempts. Built on zero-trust micro-segmentation and edge compute.',
-    targetAudience: 'Heads of Infrastructure, Chief Information Security Officers',
-    icon: 'ShieldCheck',
-    color: '#10b981',
+    slug: 'digital-course-file-evidence',
+    title: 'Digital Course File & Evidence Management',
+    tagline: 'Centralize syllabi, rubrics, question papers, and sample scripts in a secure digital vault.',
+    category: 'Evidence & Records',
+    description: 'Replace bulky paper ring binders with structured, tamper-proof digital course files. Link lesson plans, evaluation rubrics, and high/average/low sample answer scripts directly to individual course outcomes.',
+    targetAudience: 'Academic Audit Committees, Department Quality Champions, Library & Records',
+    icon: 'FolderCheck',
+    color: '#16A34A',
     keyOutcomes: [
-      '99.999% platform availability across global active-active regions',
-      'Edge compute execution within 15ms of 95% of world population',
-      'Automated multi-layer DDoS mitigation and TLS certificate lifecycle',
-      '60% infrastructure egress cost optimization'
+      'Standardized 14-item IQAC course file checklist with progress tracking',
+      'Digital preservation of sample evaluated scripts (High, Average, Low bands)',
+      'Direct correlation between exam question papers and syllabus modules',
+      'One-click dossier compilation for external peer committee review visits'
     ],
-    technologies: ['VasuNiti Cloud', 'VasuNiti CyberCore', 'Kubernetes Mesh', 'mTLS', 'WAF'],
+    technologies: ['Encrypted Evidence Vault', 'Rubric Digitizer', 'Batch Archival Storage'],
     caseStudySnippet: {
-      clientType: 'Global E-Commerce Platform',
-      result: 'Maintained 100% uptime through Black Friday peak traffic surges reaching 280,000 requests/second.',
-      impact: 'Zero degradation during 10x traffic spike'
+      clientType: 'Polytechnic & Engineering Institute',
+      result: 'Digitized over 1,200 course binders across 6 semesters, saving over 45,000 sheets of paper and audit prep hours.',
+      impact: 'Instant searchability during internal academic audits'
     }
   }
 ];

@@ -31,11 +31,11 @@ export const Button: React.FC<ButtonProps> = ({
   };
 
   const variantStyles = {
-    primary: 'bg-brand-500 hover:bg-brand-600 text-white shadow-lg shadow-brand-500/25 hover:shadow-brand-500/40 border border-brand-400/30',
-    secondary: 'bg-white/10 hover:bg-white/15 dark:bg-slate-800/80 dark:hover:bg-slate-800 text-slate-900 dark:text-white border border-black/10 dark:border-white/10 backdrop-blur-sm',
-    outline: 'border border-slate-300 dark:border-white/15 hover:border-brand-500 dark:hover:border-brand-400 text-slate-800 dark:text-slate-200 hover:text-brand-600 dark:hover:text-brand-400 bg-transparent hover:bg-brand-500/5',
+    primary: 'bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 hover:from-blue-500 hover:to-indigo-500 text-white shadow-lg shadow-indigo-500/25 hover:shadow-indigo-500/40 border border-white/20',
+    secondary: 'bg-white hover:bg-slate-50 dark:bg-[#111827] dark:hover:bg-slate-800 text-slate-800 dark:text-white border border-slate-200/90 dark:border-white/10 shadow-sm hover:shadow backdrop-blur-sm',
+    outline: 'border border-slate-300 dark:border-white/15 hover:border-blue-500 dark:hover:border-blue-400 text-slate-800 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 bg-transparent hover:bg-blue-500/5',
     ghost: 'text-slate-700 dark:text-slate-300 hover:text-black dark:hover:text-white hover:bg-black/5 dark:hover:bg-white/5',
-    glow: 'bg-gradient-to-r from-brand-600 via-indigo-600 to-brand-500 text-white shadow-glow-md hover:shadow-glow-lg border border-white/20',
+    glow: 'bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600 text-white shadow-glow-md hover:shadow-glow-lg border border-white/20',
   };
 
   return (
