@@ -132,16 +132,17 @@ const InterconnectedNodes: React.FC<{ isDark: boolean }> = ({ isDark }) => {
   );
 };
 
-// Subtle Star / Particle Field
+// Subtle Star / Particle Field - spreads widely to integrate across the hero
 const ParticleCloud: React.FC<{ isDark: boolean }> = ({ isDark }) => {
-  const count = 350;
+  const count = 450;
   const pointsRef = useRef<THREE.Points>(null);
 
   const positions = useMemo(() => {
     const pos = new Float32Array(count * 3);
     for (let i = 0; i < count; i++) {
-      pos[i * 3] = (Math.random() - 0.5) * 12;
-      pos[i * 3 + 1] = (Math.random() - 0.5) * 12;
+      // Spread wider across X to float particles across into the text area
+      pos[i * 3] = (Math.random() - 0.5) * 18 - 2.5;
+      pos[i * 3 + 1] = (Math.random() - 0.5) * 14;
       pos[i * 3 + 2] = (Math.random() - 0.5) * 12;
     }
     return pos;
@@ -149,7 +150,7 @@ const ParticleCloud: React.FC<{ isDark: boolean }> = ({ isDark }) => {
 
   useFrame((_, delta) => {
     if (pointsRef.current) {
-      pointsRef.current.rotation.y -= delta * 0.03;
+      pointsRef.current.rotation.y -= delta * 0.02;
     }
   });
 
@@ -158,10 +159,10 @@ const ParticleCloud: React.FC<{ isDark: boolean }> = ({ isDark }) => {
       <PointMaterial
         transparent
         color={isDark ? '#7cb2ff' : '#005ee6'}
-        size={0.035}
+        size={0.038}
         sizeAttenuation={true}
         depthWrite={false}
-        opacity={isDark ? 0.45 : 0.3}
+        opacity={isDark ? 0.55 : 0.35}
       />
     </Points>
   );
@@ -186,9 +187,9 @@ export const HeroEcosystem3D: React.FC<{ className?: string }> = ({ className = 
   const isDark = theme === 'dark';
 
   return (
-    <div className={`relative w-full h-[400px] sm:h-[480px] lg:h-[560px] ${className}`}>
-      {/* Background Soft Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-brand-500/15 dark:bg-brand-500/20 rounded-full blur-3xl pointer-events-none -z-10" />
+    <div className={`relative w-full h-[420px] sm:h-[500px] lg:h-[580px] xl:h-[620px] ${className}`}>
+      {/* Expansive Ambient Radial Glow that bridges across the hero atmosphere */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[130%] h-[120%] bg-gradient-to-tr from-brand-500/20 via-indigo-500/15 to-cyan-400/10 dark:from-brand-500/25 dark:via-indigo-500/20 dark:to-cyan-400/15 rounded-full blur-[100px] pointer-events-none -z-10" />
 
       <Suspense fallback={<FallbackVisual />}>
         <Canvas
@@ -196,9 +197,9 @@ export const HeroEcosystem3D: React.FC<{ className?: string }> = ({ className = 
           gl={{ antialias: true, alpha: true, powerPreference: 'high-performance' }}
           className="w-full h-full cursor-grab active:cursor-grabbing"
         >
-          <ambientLight intensity={isDark ? 0.6 : 0.9} />
-          <pointLight position={[10, 10, 10]} intensity={isDark ? 1.2 : 0.9} color="#3888ff" />
-          <pointLight position={[-10, -10, -10]} intensity={0.6} color="#6366f1" />
+          <ambientLight intensity={isDark ? 0.7 : 0.95} />
+          <pointLight position={[10, 10, 10]} intensity={isDark ? 1.3 : 1.0} color="#3888ff" />
+          <pointLight position={[-10, -10, -10]} intensity={0.7} color="#6366f1" />
 
           <DigitalCore isDark={isDark} />
           <InterconnectedNodes isDark={isDark} />
