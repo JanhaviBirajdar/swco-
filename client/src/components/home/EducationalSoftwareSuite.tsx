@@ -93,7 +93,7 @@ export const EducationalSoftwareSuite: React.FC = () => {
   };
 
   return (
-    <section id="products" className="py-24 bg-slate-50 dark:bg-[#070C18] border-b border-slate-200/90 dark:border-white/[0.06] transition-colors relative overflow-hidden">
+    <section id="products" className="scroll-mt-24 py-24 bg-slate-50 dark:bg-[#070C18] border-b border-slate-200/90 dark:border-white/[0.06] transition-colors relative overflow-hidden">
       {/* Background Ambient Glow */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[400px] bg-gradient-to-r from-blue-500/10 via-indigo-500/10 to-violet-500/10 rounded-full blur-[120px] pointer-events-none -z-10" />
 

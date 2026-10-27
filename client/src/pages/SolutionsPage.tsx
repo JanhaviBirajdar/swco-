@@ -51,7 +51,7 @@ export const SolutionsPage: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.4, delay: index * 0.08 }}
-                className="p-8 sm:p-10 rounded-3xl bg-slate-50/70 dark:bg-[#0E1526] border border-slate-200/90 dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:border-indigo-500/30 transition-all relative overflow-hidden group"
+                className="scroll-mt-28 p-8 sm:p-10 rounded-3xl bg-slate-50/70 dark:bg-[#0E1526] border border-slate-200/90 dark:border-white/[0.08] shadow-sm hover:shadow-xl dark:hover:border-indigo-500/30 transition-all relative overflow-hidden group"
               >
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   

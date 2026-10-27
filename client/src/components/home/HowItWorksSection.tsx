@@ -46,7 +46,7 @@ export const HowItWorksSection: React.FC = () => {
   ];
 
   return (
-    <section id="how-it-works" className="py-24 bg-white dark:bg-[#050814] border-b border-slate-200/90 dark:border-white/[0.06] transition-colors">
+    <section id="how-it-works" className="scroll-mt-24 py-24 bg-white dark:bg-[#050814] border-b border-slate-200/90 dark:border-white/[0.06] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}

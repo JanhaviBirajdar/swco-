@@ -162,13 +162,13 @@ export const SolutionsGrid: React.FC = () => {
   ];
 
   return (
-    <section id="features" className="py-24 bg-white dark:bg-[#050814] transition-colors">
+    <section id="features" className="scroll-mt-24 py-24 bg-white dark:bg-[#050814] transition-colors">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <span className="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-500/10 text-blue-700 dark:text-blue-400 border border-blue-200/80 dark:border-blue-500/25 text-xs font-semibold uppercase tracking-wider mb-3">
-            Core Platform Capabilities
+            Platform Features &amp; Capabilities
           </span>
           <h2 className="font-display text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight mb-4">
             Everything You Need to Connect Teaching with Outcomes.

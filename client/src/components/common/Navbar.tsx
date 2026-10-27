@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ArrowUpRight, ChevronDown, GraduationCap, BarChart2, FileCheck, FolderCheck, Sparkles, BookOpen } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
@@ -10,7 +10,25 @@ export const Navbar: React.FC = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [solutionsDropdownOpen, setSolutionsDropdownOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
   const { openDemoModal } = useDemoModal();
+
+  const handleNavClick = (e: React.MouseEvent, path: string) => {
+    if (path.startsWith('/#')) {
+      e.preventDefault();
+      const targetId = path.substring(2);
+      if (location.pathname === '/') {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+          window.history.pushState(null, '', `#${targetId}`);
+        }
+      } else {
+        navigate(`/#${targetId}`);
+      }
+      setMobileMenuOpen(false);
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -97,7 +115,13 @@ export const Navbar: React.FC = () => {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
+              const isHashLink = link.path.startsWith('/#');
+              const targetId = isHashLink ? link.path.substring(2) : '';
+              const isActive = isHashLink
+                ? location.pathname === '/' && location.hash === `#${targetId}`
+                : link.path === '/'
+                ? location.pathname === '/' && !location.hash
+                : location.pathname === link.path;
 
               if (link.hasDropdown) {
                 return (
@@ -174,10 +198,27 @@ export const Navbar: React.FC = () => {
               }
 
               // Normal Link or hash link
+              if (isHashLink) {
+                return (
+                  <a
+                    key={link.name}
+                    href={link.path}
+                    onClick={(e) => handleNavClick(e, link.path)}
+                    className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-colors ${
+                      isActive
+                        ? 'text-blue-600 dark:text-blue-400 bg-blue-50/90 dark:bg-blue-500/10 border border-blue-200/60 dark:border-blue-500/20 font-semibold'
+                        : 'text-slate-700 dark:text-slate-200 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-slate-100/70 dark:hover:bg-slate-800/60'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                );
+              }
+
               return (
-                <a
+                <Link
                   key={link.name}
-                  href={link.path.startsWith('/#') ? link.path.substring(1) : link.path}
+                  to={link.path}
                   className={`px-3.5 py-2 rounded-xl text-sm font-medium transition-colors ${
                     isActive
                       ? 'text-blue-600 dark:text-blue-400 bg-blue-50/90 dark:bg-blue-500/10 border border-blue-200/60 dark:border-blue-500/20 font-semibold'
@@ -185,7 +226,7 @@ export const Navbar: React.FC = () => {
                   }`}
                 >
                   {link.name}
-                </a>
+                </Link>
               );
             })}
           </nav>
@@ -232,38 +273,49 @@ export const Navbar: React.FC = () => {
             <div className="space-y-1">
               <Link
                 to="/"
+                onClick={() => setMobileMenuOpen(false)}
                 className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70"
               >
                 Home
               </Link>
               <Link
+                to="/products"
+                onClick={() => setMobileMenuOpen(false)}
+                className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70"
+              >
+                Products
+              </Link>
+              <Link
                 to="/solutions"
+                onClick={() => setMobileMenuOpen(false)}
                 className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70"
               >
                 Solutions
               </Link>
               <a
-                href="#features"
-                onClick={() => setMobileMenuOpen(false)}
+                href="/#features"
+                onClick={(e) => handleNavClick(e, '/#features')}
                 className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70"
               >
                 Features
               </a>
               <a
-                href="#how-it-works"
-                onClick={() => setMobileMenuOpen(false)}
+                href="/#how-it-works"
+                onClick={(e) => handleNavClick(e, '/#how-it-works')}
                 className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70"
               >
                 How It Works
               </a>
               <Link
                 to="/about"
+                onClick={() => setMobileMenuOpen(false)}
                 className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70"
               >
                 About VasuNiti
               </Link>
               <Link
                 to="/contact"
+                onClick={() => setMobileMenuOpen(false)}
                 className="block px-3.5 py-2.5 rounded-xl text-sm font-semibold text-slate-900 dark:text-white hover:bg-slate-100 dark:hover:bg-slate-800/70"
               >
                 Contact

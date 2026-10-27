@@ -15,17 +15,45 @@ import { PrivacyPage } from './pages/PrivacyPage';
 import { TermsPage } from './pages/TermsPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 
-// Auto scroll to top on navigation
-const ScrollToTop: React.FC = () => {
-  const { pathname } = useLocation();
+// Auto scroll to top on navigation or smooth scroll to hash targets (#features, #how-it-works, etc.)
+const ScrollManager: React.FC = () => {
+  const { pathname, hash } = useLocation();
 
   useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      left: 0,
-      behavior: 'smooth',
-    });
-  }, [pathname]);
+    // Disable browser's automatic scroll restoration to prevent route changes from resetting scroll
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+
+    if (hash) {
+      const targetId = hash.replace('#', '');
+      const doScroll = () => {
+        const element = document.getElementById(targetId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      };
+
+      // Run immediately and across multiple ticks to accommodate 3D canvas/framer-motion layout shifts
+      const rAf = requestAnimationFrame(doScroll);
+      const timer1 = setTimeout(doScroll, 120);
+      const timer2 = setTimeout(doScroll, 350);
+      const timer3 = setTimeout(doScroll, 700);
+
+      return () => {
+        cancelAnimationFrame(rAf);
+        clearTimeout(timer1);
+        clearTimeout(timer2);
+        clearTimeout(timer3);
+      };
+    } else {
+      window.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [pathname, hash]);
 
   return null;
 };
@@ -35,7 +63,7 @@ export const App: React.FC = () => {
     <ThemeProvider>
       <DemoModalProvider>
         <Router>
-          <ScrollToTop />
+          <ScrollManager />
           <div className="min-h-screen flex flex-col bg-white dark:bg-[#050814] text-slate-900 dark:text-slate-100 selection:bg-indigo-600 selection:text-white transition-colors duration-300">
             <Navbar />
             <main className="flex-grow">

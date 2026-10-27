@@ -98,14 +98,14 @@ export const Footer: React.FC = () => {
                 </Link>
               </li>
               <li>
-                <a href="#how-it-works" className="text-slate-400 hover:text-white transition-colors">
+                <Link to="/#how-it-works" className="text-slate-400 hover:text-white transition-colors">
                   How OBE Works
-                </a>
+                </Link>
               </li>
               <li>
-                <a href="#interactive-demo" className="text-slate-400 hover:text-white transition-colors">
-                  Interactive Mapping Demo
-                </a>
+                <Link to="/#features" className="text-slate-400 hover:text-white transition-colors">
+                  Platform Features
+                </Link>
               </li>
             </ul>
           </div>
