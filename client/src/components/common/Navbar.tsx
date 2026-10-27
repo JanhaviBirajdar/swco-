@@ -28,6 +28,7 @@ export const Navbar: React.FC = () => {
 
   const navLinks = [
     { name: 'Home', path: '/' },
+    { name: 'Products', path: '/products' },
     {
       name: 'Solutions',
       path: '/solutions',
@@ -88,7 +89,7 @@ export const Navbar: React.FC = () => {
                 VASU<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-300">NITI</span>
               </span>
               <span className="text-[10px] font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                Outcome Intelligence
+                Educational Software
               </span>
             </div>
           </Link>

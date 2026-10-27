@@ -8,10 +8,10 @@ export const ProductScreenshotsSection: React.FC = () => {
   const [activeTab, setActiveTab] = useState<'matrix' | 'attainment' | 'reports' | 'evidence'>('matrix');
 
   const tabs = [
-    { id: 'matrix' as const, label: 'Mapping Matrix', icon: Layers },
-    { id: 'attainment' as const, label: 'Attainment Engine', icon: BarChart3 },
-    { id: 'reports' as const, label: 'Accreditation Reports', icon: FileText },
-    { id: 'evidence' as const, label: 'Digital Course File', icon: FolderArchive },
+    { id: 'matrix' as const, label: 'CO–PO Mapping Module', icon: Layers },
+    { id: 'attainment' as const, label: 'Attainment Analytics Engine', icon: BarChart3 },
+    { id: 'reports' as const, label: 'Accreditation Reports Suite', icon: FileText },
+    { id: 'evidence' as const, label: 'Digital Course File Vault', icon: FolderArchive },
   ];
 
   return (
