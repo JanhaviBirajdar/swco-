@@ -1,5 +1,6 @@
 import React from 'react';
 import { SEOHead } from '../components/common/SEOHead';
+import { companyData } from '../data/companyData';
 
 export const TermsPage: React.FC = () => {
   return (
@@ -63,7 +64,14 @@ export const TermsPage: React.FC = () => {
                 5. Contact & Legal Notices
               </h2>
               <p>
-                Formal notices regarding licensing agreements or institutional service levels may be directed to <strong className="text-indigo-600 dark:text-indigo-400">contact@vasuniti.com</strong>.
+                Formal notices regarding licensing agreements or institutional service levels may be directed to{' '}
+                <a href={`mailto:${companyData.inquiryEmail}`} className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+                  {companyData.inquiryEmail}
+                </a>{' '}
+                or via phone at{' '}
+                <a href={`tel:${companyData.phone.replace(/[^+\d]/g, '')}`} className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+                  {companyData.phone}
+                </a>, or delivered to our registered address: <strong>{companyData.address}</strong>.
               </p>
             </section>
           </div>

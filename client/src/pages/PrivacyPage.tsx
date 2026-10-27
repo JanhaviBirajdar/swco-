@@ -1,5 +1,6 @@
 import React from 'react';
 import { SEOHead } from '../components/common/SEOHead';
+import { companyData } from '../data/companyData';
 import { ShieldCheck, Lock, FileCheck } from 'lucide-react';
 
 export const PrivacyPage: React.FC = () => {
@@ -64,7 +65,15 @@ export const PrivacyPage: React.FC = () => {
                 5. Contacting Our Data Governance Officer
               </h2>
               <p>
-                For inquiries regarding academic data processing, confidentiality agreements, or institutional compliance, contact our team at: <strong className="text-indigo-600 dark:text-indigo-400">contact@vasuniti.com</strong>.
+                For inquiries regarding academic data processing, confidentiality agreements, or institutional compliance, contact our team at:{' '}
+                <a href={`mailto:${companyData.inquiryEmail}`} className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+                  {companyData.inquiryEmail}
+                </a>{' '}
+                or phone{' '}
+                <a href={`tel:${companyData.phone.replace(/[^+\d]/g, '')}`} className="text-indigo-600 dark:text-indigo-400 hover:underline font-semibold">
+                  {companyData.phone}
+                </a>{' '}
+                (Registered Address: <strong>{companyData.address}</strong>).
               </p>
             </section>
           </div>

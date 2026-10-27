@@ -360,8 +360,10 @@ export const ContactPage: React.FC = () => {
                       <Mail className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-slate-400 block text-[11px]">Academic Inquiries</span>
-                      <strong className="text-white text-sm">{companyData.inquiryEmail}</strong>
+                      <span className="text-slate-400 block text-[11px]">Academic & General Inquiries</span>
+                      <a href={`mailto:${companyData.inquiryEmail}`} className="text-white text-sm font-bold hover:underline hover:text-blue-300 transition-colors">
+                        {companyData.inquiryEmail}
+                      </a>
                     </div>
                   </div>
 
@@ -371,7 +373,9 @@ export const ContactPage: React.FC = () => {
                     </div>
                     <div>
                       <span className="text-slate-400 block text-[11px]">Helpline & Consultation</span>
-                      <strong className="text-white text-sm">{companyData.phone}</strong>
+                      <a href={`tel:${companyData.phone.replace(/[^+\d]/g, '')}`} className="text-white text-sm font-bold hover:underline hover:text-indigo-300 transition-colors">
+                        {companyData.phone}
+                      </a>
                     </div>
                   </div>
 
@@ -380,13 +384,9 @@ export const ContactPage: React.FC = () => {
                       <MapPin className="w-4 h-4" />
                     </div>
                     <div>
-                      <span className="text-slate-400 block text-[11px]">Higher-Ed Solutions Centers</span>
-                      <div className="text-white text-xs mt-0.5">
-                        {companyData.locations.map((loc) => (
-                          <div key={loc.city} className="mb-1">
-                            <strong>{loc.city}:</strong> {loc.address} ({loc.type})
-                          </div>
-                        ))}
+                      <span className="text-slate-400 block text-[11px]">Registered Office Address</span>
+                      <div className="text-white text-xs mt-0.5 leading-relaxed">
+                        {companyData.address}
                       </div>
                     </div>
                   </div>

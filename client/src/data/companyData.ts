@@ -8,12 +8,12 @@ export const companyData = {
   mission: 'To empower engineering colleges and universities with intuitive, mathematically rigorous academic software that streamlines Outcome-Based Education, eliminates spreadsheet friction, and supports NBA and NAAC accreditation documentation.',
   vision: 'A transparent higher education ecosystem where learning outcomes, assessment data, and continuous quality improvement align seamlessly across departments.',
   foundedYear: '2021',
-  contactEmail: 'admissions-demo@vasuniti.com',
-  inquiryEmail: 'contact@vasuniti.com',
-  phone: '+91 (020) 2590-7800',
+  contactEmail: 'sumali1608@gmail.com',
+  inquiryEmail: 'sumali1608@gmail.com',
+  phone: '+91 8007022300',
+  address: 'Venkatesh Sharvil, CNG gas Station, Dhayari, Pune, 411041',
   locations: [
-    { city: 'Bengaluru', country: 'India', address: 'Tech Innovation Park, Whitefield', type: 'Engineering & R&D Hub' },
-    { city: 'Pune', country: 'India', address: 'Shivajinagar Academic Corridor', type: 'Higher-Ed Solutions HQ' }
+    { city: 'Pune', country: 'India', address: 'Venkatesh Sharvil, CNG gas Station, Dhayari, Pune, 411041', type: 'Corporate Office & Solutions HQ' }
   ],
   stats: [
     { value: '45+', label: 'Higher Education Institutions', detail: 'Engineering colleges & autonomous universities using VasuNiti workflows' },
