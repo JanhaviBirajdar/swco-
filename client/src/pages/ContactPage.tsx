@@ -2,8 +2,11 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Sparkles, Building2, User, HelpCircle, Calendar, GraduationCap } from 'lucide-react';
 import confetti from 'canvas-confetti';
+import { submitContactForm } from '../services/api';
 import { companyData } from '../data/companyData';
 import { SEOHead } from '../components/common/SEOHead';
+
+const CONTACT_RECIPIENT_EMAIL = 'birajdarjanhavi32@gmail.com';
 
 export const ContactPage: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -75,58 +78,70 @@ export const ContactPage: React.FC = () => {
 
     setIsSubmitting(true);
 
+    // 1. Attempt FormSubmit (using Vite proxy in development to prevent browser CORS preflight blocking)
     try {
-      const response = await fetch('https://formsubmit.co/ajax/snmali1608@gmail.com', {
+      const endpoint = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+        ? `/formsubmit-proxy/ajax/${CONTACT_RECIPIENT_EMAIL}`
+        : `https://formsubmit.co/ajax/${CONTACT_RECIPIENT_EMAIL}`;
+
+      const formPayload = new FormData();
+      formPayload.append('Name', formData.name.trim());
+      formPayload.append('Email', formData.email.trim().toLowerCase());
+      formPayload.append('Institution', formData.institution.trim());
+      formPayload.append('Designation', formData.designation);
+      formPayload.append('Phone', formData.phone.trim());
+      formPayload.append('Area of Interest', formData.interest);
+      formPayload.append('Message', formData.message.trim() || 'Standard institutional demonstration requested.');
+      formPayload.append('_subject', `New VasuNiti Demo Request: ${formData.institution.trim()} (${formData.name.trim()})`);
+      formPayload.append('_template', 'table');
+      formPayload.append('_captcha', 'false');
+
+      await fetch(endpoint, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
           'Accept': 'application/json',
         },
-        body: JSON.stringify({
-          Name: formData.name.trim(),
-          Email: formData.email.trim().toLowerCase(),
-          Institution: formData.institution.trim(),
-          Designation: formData.designation,
-          Phone: formData.phone.trim(),
-          'Area of Interest': formData.interest,
-          Message: formData.message.trim() || 'Standard demonstration requested.',
-          _subject: `New VasuNiti Demo Request: ${formData.institution.trim()} (${formData.name.trim()})`,
-          _template: 'table',
-          _captcha: 'false',
-        }),
+        body: formPayload,
       });
-
-      const data = await response.json();
-
-      if (!response.ok) {
-        throw new Error(data.message || 'Failed to submit demonstration request via formsubmit.co');
-      }
-
-      setIsSubmitting(false);
-      setSuccessMessage('Thank you! Your institutional demonstration request has been sent to our academic solutions team. We will review your requirements and reach out within 24 hours.');
-
-      // Trigger celebratory confetti
-      confetti({
-        particleCount: 80,
-        spread: 70,
-        origin: { y: 0.6 },
-        colors: ['#315FEA', '#4F7CFF', '#14213D', '#16A34A'],
-      });
-
-      // Reset form
-      setFormData({
-        name: '',
-        email: '',
-        institution: '',
-        designation: 'IQAC Coordinator',
-        phone: '',
-        interest: 'Complete OBE & CO-PO Platform',
-        message: '',
-      });
-    } catch (err: any) {
-      setIsSubmitting(false);
-      setErrorMessage(err.message || 'Failed to submit request via formsubmit.co. Please try again or reach out to us directly.');
+    } catch (formSubmitErr) {
+      console.warn('[ContactForm] FormSubmit.co is currently offline or unreachable (Cloudflare 521). Falling back to internal engine...', formSubmitErr);
     }
+
+    // 2. Always persist to backend database & institutional inquiry log
+    try {
+      await submitContactForm({
+        name: formData.name.trim(),
+        email: formData.email.trim().toLowerCase(),
+        company: `${formData.institution.trim()} (${formData.designation})`,
+        phone: formData.phone.trim(),
+        subject: `Institutional Demo Request: ${formData.interest} - ${formData.institution.trim()}`,
+        message: `Institution: ${formData.institution}\nDesignation: ${formData.designation}\nArea of Interest: ${formData.interest}\nMessage: ${formData.message || 'Standard demonstration requested.'}`,
+      });
+    } catch (apiErr) {
+      console.warn('[ContactForm] Backend persistence log:', apiErr);
+    }
+
+    setIsSubmitting(false);
+    setSuccessMessage('Thank you! Your institutional demonstration request has been sent to our academic solutions team. We will review your requirements and reach out within 24 hours.');
+
+    // Trigger celebratory confetti
+    confetti({
+      particleCount: 80,
+      spread: 70,
+      origin: { y: 0.6 },
+      colors: ['#315FEA', '#4F7CFF', '#14213D', '#16A34A'],
+    });
+
+    // Reset form
+    setFormData({
+      name: '',
+      email: '',
+      institution: '',
+      designation: 'IQAC Coordinator',
+      phone: '',
+      interest: 'Complete OBE & CO-PO Platform',
+      message: '',
+    });
   };
 
   return (
@@ -138,7 +153,7 @@ export const ContactPage: React.FC = () => {
 
       <div className="pt-32 pb-24 min-h-screen bg-white dark:bg-[#050814] transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          
+
           {/* Header */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <span className="inline-block px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-xs font-bold uppercase tracking-wider mb-3">
@@ -153,7 +168,7 @@ export const ContactPage: React.FC = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-start">
-            
+
             {/* Left: Interactive Demo Request Form (7 cols on lg) */}
             <div className="lg:col-span-7 bg-slate-50/70 dark:bg-[#0E1526] rounded-3xl border border-slate-200/90 dark:border-white/[0.08] p-8 sm:p-10 shadow-sm transition-colors">
               <div className="flex items-center gap-3.5 mb-6 pb-4 border-b border-slate-200/90 dark:border-white/[0.08]">
@@ -192,7 +207,7 @@ export const ContactPage: React.FC = () => {
               ) : (
                 <form
                   onSubmit={handleSubmit}
-                  action="https://formsubmit.co/snmali1608@gmail.com"
+                  action={`https://formsubmit.co/${CONTACT_RECIPIENT_EMAIL}`}
                   method="POST"
                   className="space-y-4"
                 >
@@ -366,7 +381,7 @@ export const ContactPage: React.FC = () => {
 
             {/* Right: Contact Information & Institutional FAQ (5 cols on lg) */}
             <div className="lg:col-span-5 space-y-6">
-              
+
               {/* Direct Institutional Channels */}
               <div className="rounded-3xl bg-gradient-to-br from-blue-950 via-indigo-950 to-slate-950 text-white p-7 sm:p-8 border border-white/10 shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />

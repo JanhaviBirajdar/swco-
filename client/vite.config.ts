@@ -17,6 +17,11 @@ export default defineConfig({
         target: 'http://localhost:5000',
         changeOrigin: true,
       },
+      '/formsubmit-proxy': {
+        target: 'https://formsubmit.co',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/formsubmit-proxy/, ''),
+      },
     },
   },
 });
