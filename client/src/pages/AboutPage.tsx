@@ -32,6 +32,20 @@ export const AboutPage: React.FC = () => {
           
           {/* Hero Story Banner */}
           <div className="max-w-4xl mx-auto text-center mb-16">
+            <div className="flex justify-center mb-6">
+              <div className="p-3.5 sm:p-4 rounded-3xl bg-slate-50/90 dark:bg-white/[0.04] border border-slate-200/80 dark:border-white/10 shadow-lg shadow-blue-500/5 backdrop-blur-sm">
+                <img
+                  src="/vasuniti-logo.png"
+                  alt="VasuNiti Official Logo"
+                  className="h-20 sm:h-24 w-auto object-contain block dark:hidden"
+                />
+                <img
+                  src="/vasuniti-logo-dark.png"
+                  alt="VasuNiti Official Logo"
+                  className="h-20 sm:h-24 w-auto object-contain hidden dark:block"
+                />
+              </div>
+            </div>
             <span className="inline-block px-3.5 py-1.5 rounded-full bg-blue-500/10 text-blue-600 dark:text-blue-400 border border-blue-500/20 text-xs font-bold uppercase tracking-wider mb-3">
               About VasuNiti
             </span>

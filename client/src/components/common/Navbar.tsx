@@ -94,21 +94,19 @@ export const Navbar: React.FC = () => {
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
-          {/* VasuNiti Logo & Brand Identity */}
+          {/* VasuNiti Official Logo */}
           <Link to="/" className="flex items-center gap-3 group focus:outline-none" aria-label="VasuNiti Home">
-            <div className="relative w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-md shadow-indigo-500/20 border border-white/20 transition-transform duration-200 group-hover:scale-105">
-              <span className="font-display font-extrabold text-base tracking-tight text-white flex items-center">
-                V<span className="text-cyan-300">N</span>
-              </span>
-              <div className="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-500 border-2 border-white dark:border-[#050814] animate-pulse" />
-            </div>
-            <div className="flex flex-col">
-              <span className="font-display font-extrabold text-lg text-slate-900 dark:text-white leading-tight tracking-tight uppercase">
-                VASU<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-300">NITI</span>
-              </span>
-              <span className="text-[10px] font-medium uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                Educational Software
-              </span>
+            <div className="relative flex items-center group-hover:scale-[1.03] transition-transform duration-200">
+              <img
+                src="/vasuniti-logo-horizontal.png"
+                alt="VasuNiti — Educational Software"
+                className="h-10 sm:h-11 w-auto object-contain block dark:hidden"
+              />
+              <img
+                src="/vasuniti-logo-horizontal-dark.png"
+                alt="VasuNiti — Educational Software"
+                className="h-10 sm:h-11 w-auto object-contain hidden dark:block"
+              />
             </div>
           </Link>
 
@@ -270,6 +268,23 @@ export const Navbar: React.FC = () => {
             transition={{ duration: 0.2 }}
             className="lg:hidden border-b border-slate-200 dark:border-white/[0.08] bg-white dark:bg-[#0A101F] px-4 pt-3 pb-6 shadow-2xl backdrop-blur-xl"
           >
+            <div className="px-2 pb-3 mb-2 border-b border-slate-100 dark:border-white/[0.08] flex items-center justify-between">
+              <Link to="/" onClick={() => setMobileMenuOpen(false)}>
+                <img
+                  src="/vasuniti-logo-horizontal.png"
+                  alt="VasuNiti"
+                  className="h-8 w-auto object-contain block dark:hidden"
+                />
+                <img
+                  src="/vasuniti-logo-horizontal-dark.png"
+                  alt="VasuNiti"
+                  className="h-8 w-auto object-contain hidden dark:block"
+                />
+              </Link>
+              <span className="text-[10px] font-semibold uppercase tracking-wider text-blue-600 dark:text-cyan-400 bg-blue-50 dark:bg-white/5 px-2.5 py-1 rounded-full border border-blue-200/50 dark:border-white/10">
+                OBE Software
+              </span>
+            </div>
             <div className="space-y-1">
               <Link
                 to="/"

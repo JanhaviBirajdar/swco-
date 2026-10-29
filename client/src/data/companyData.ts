@@ -8,8 +8,8 @@ export const companyData = {
   mission: 'To empower engineering colleges and universities with intuitive, mathematically rigorous academic software that streamlines Outcome-Based Education, eliminates spreadsheet friction, and supports NBA and NAAC accreditation documentation.',
   vision: 'A transparent higher education ecosystem where learning outcomes, assessment data, and continuous quality improvement align seamlessly across departments.',
   foundedYear: '2021',
-  contactEmail: 'sumali1608@gmail.com',
-  inquiryEmail: 'sumali1608@gmail.com',
+  contactEmail: 'snmali1608@gmail.com',
+  inquiryEmail: 'snmali1608@gmail.com',
   phone: '+91 8007022300',
   address: 'Venkatesh Sharvil, CNG gas Station, Dhayari, Pune, 411041',
   locations: [

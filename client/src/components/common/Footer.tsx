@@ -20,13 +20,12 @@ export const Footer: React.FC = () => {
           
           {/* Brand Column (2 cols on lg) */}
           <div className="lg:col-span-2 space-y-4">
-            <Link to="/" className="flex items-center gap-3 group inline-block">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center text-white font-bold shadow-lg shadow-indigo-600/25 border border-white/20 group-hover:scale-105 transition-transform duration-200">
-                <span className="font-display text-base font-extrabold text-cyan-300">VN</span>
-              </div>
-              <span className="font-display font-extrabold text-2xl tracking-tight text-white uppercase">
-                VASU<span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-violet-400 bg-clip-text text-transparent">NITI</span>
-              </span>
+            <Link to="/" className="inline-block group focus:outline-none" aria-label="VasuNiti Home">
+              <img
+                src="/vasuniti-logo-horizontal-dark.png"
+                alt="VasuNiti"
+                className="h-11 sm:h-12 w-auto object-contain group-hover:scale-[1.03] transition-transform duration-200"
+              />
             </Link>
 
             <p className="text-sm text-slate-400 max-w-sm leading-relaxed">

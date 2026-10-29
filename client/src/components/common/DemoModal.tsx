@@ -142,8 +142,8 @@ export const DemoModal: React.FC = () => {
             <div className="relative bg-gradient-to-r from-blue-950 via-indigo-950 to-slate-950 px-6 sm:px-7 py-5 text-white flex items-center justify-between border-b border-white/10 overflow-hidden">
               <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
               <div className="relative flex items-center gap-3.5">
-                <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-blue-600 via-indigo-600 to-violet-600 flex items-center justify-center text-white shadow-lg shadow-indigo-600/30 border border-white/20">
-                  <Calendar className="w-5 h-5" />
+                <div className="w-10 h-10 rounded-xl bg-white/10 p-1 flex items-center justify-center border border-white/20 shadow-lg shadow-indigo-600/30 flex-shrink-0">
+                  <img src="/vasuniti-symbol.png" alt="VasuNiti" className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <h3 id="modal-title" className="text-lg font-bold text-white font-display">
@@ -168,8 +168,8 @@ export const DemoModal: React.FC = () => {
             <div className="p-6 sm:p-7">
               {success ? (
                 <div className="text-center py-8 px-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-10 h-10" />
+                  <div className="w-16 h-16 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-2 mx-auto flex items-center justify-center mb-4 shadow-md">
+                    <img src="/vasuniti-symbol.png" alt="VasuNiti" className="w-full h-full object-contain" />
                   </div>
                   <h4 className="text-2xl font-bold text-slate-900 dark:text-white font-display mb-2">
                     Demo Request Received!

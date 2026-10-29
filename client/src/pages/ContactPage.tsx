@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, CheckCircle2, AlertCircle, Sparkles, Building2, User, HelpCircle, Calendar, GraduationCap } from 'lucide-react';
 import confetti from 'canvas-confetti';
-import { submitContactForm } from '../services/api';
 import { companyData } from '../data/companyData';
 import { SEOHead } from '../components/common/SEOHead';
 
@@ -77,18 +76,34 @@ export const ContactPage: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const payload = {
-        name: formData.name.trim(),
-        email: formData.email.trim().toLowerCase(),
-        company: `${formData.institution.trim()} (${formData.designation})`,
-        phone: formData.phone.trim(),
-        subject: `Institutional Demo Request: ${formData.interest}`,
-        message: `Institution: ${formData.institution}\nDesignation: ${formData.designation}\nArea of Interest: ${formData.interest}\nMessage: ${formData.message || 'Standard demonstration requested.'}`,
-      };
+      const response = await fetch('https://formsubmit.co/ajax/snmali1608@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json',
+        },
+        body: JSON.stringify({
+          Name: formData.name.trim(),
+          Email: formData.email.trim().toLowerCase(),
+          Institution: formData.institution.trim(),
+          Designation: formData.designation,
+          Phone: formData.phone.trim(),
+          'Area of Interest': formData.interest,
+          Message: formData.message.trim() || 'Standard demonstration requested.',
+          _subject: `New VasuNiti Demo Request: ${formData.institution.trim()} (${formData.name.trim()})`,
+          _template: 'table',
+          _captcha: 'false',
+        }),
+      });
 
-      const res = await submitContactForm(payload);
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.message || 'Failed to submit demonstration request via formsubmit.co');
+      }
+
       setIsSubmitting(false);
-      setSuccessMessage(res.message);
+      setSuccessMessage('Thank you! Your institutional demonstration request has been sent to our academic solutions team. We will review your requirements and reach out within 24 hours.');
 
       // Trigger celebratory confetti
       confetti({
@@ -110,7 +125,7 @@ export const ContactPage: React.FC = () => {
       });
     } catch (err: any) {
       setIsSubmitting(false);
-      setErrorMessage(err.message || 'Failed to submit request. Please try again.');
+      setErrorMessage(err.message || 'Failed to submit request via formsubmit.co. Please try again or reach out to us directly.');
     }
   };
 
@@ -157,8 +172,8 @@ export const ContactPage: React.FC = () => {
 
               {successMessage ? (
                 <div className="text-center py-10 px-4">
-                  <div className="w-16 h-16 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 mx-auto flex items-center justify-center mb-4">
-                    <CheckCircle2 className="w-10 h-10" />
+                  <div className="w-16 h-16 rounded-2xl bg-white dark:bg-white/5 border border-slate-200 dark:border-white/10 p-2 mx-auto flex items-center justify-center mb-4 shadow-md">
+                    <img src="/vasuniti-symbol.png" alt="VasuNiti" className="w-full h-full object-contain" />
                   </div>
                   <h3 className="text-2xl font-bold text-slate-900 dark:text-white font-display mb-2">
                     Demonstration Request Received!
@@ -175,7 +190,12 @@ export const ContactPage: React.FC = () => {
                   </button>
                 </div>
               ) : (
-                <form onSubmit={handleSubmit} className="space-y-4">
+                <form
+                  onSubmit={handleSubmit}
+                  action="https://formsubmit.co/snmali1608@gmail.com"
+                  method="POST"
+                  className="space-y-4"
+                >
                   {errorMessage && (
                     <div className="p-3.5 bg-red-50 dark:bg-red-950/40 border border-red-200 dark:border-red-800/60 rounded-xl flex items-center gap-2.5 text-xs text-red-700 dark:text-red-300">
                       <AlertCircle className="w-4 h-4 flex-shrink-0" />
@@ -350,9 +370,14 @@ export const ContactPage: React.FC = () => {
               {/* Direct Institutional Channels */}
               <div className="rounded-3xl bg-gradient-to-br from-blue-950 via-indigo-950 to-slate-950 text-white p-7 sm:p-8 border border-white/10 shadow-xl relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-64 h-64 bg-indigo-500/10 rounded-full blur-2xl pointer-events-none" />
-                <h3 className="font-display text-lg font-bold text-white mb-5 relative">
-                  Institutional Inquiries & Support
-                </h3>
+                <div className="flex items-center gap-3 mb-5 relative">
+                  <div className="w-9 h-9 rounded-xl bg-white/10 p-1 flex items-center justify-center border border-white/20 shadow-md flex-shrink-0">
+                    <img src="/vasuniti-symbol.png" alt="VasuNiti" className="w-full h-full object-contain" />
+                  </div>
+                  <h3 className="font-display text-lg font-bold text-white">
+                    Institutional Inquiries & Support
+                  </h3>
+                </div>
 
                 <div className="space-y-4 text-xs text-slate-300 relative">
                   <div className="flex items-start gap-3">

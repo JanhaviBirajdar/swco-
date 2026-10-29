@@ -19,7 +19,7 @@ export const HighConversionCTA: React.FC = () => {
           <div className="relative z-10 max-w-3xl mx-auto text-center">
             {/* Tag */}
             <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 text-slate-200 text-xs font-semibold uppercase tracking-wider mb-5 border border-white/15 backdrop-blur-md">
-              <Award className="w-3.5 h-3.5 text-cyan-400" />
+              <img src="/vasuniti-symbol.png" alt="VasuNiti" className="w-4 h-4 object-contain" />
               Institutional Outcome Software
             </div>
 
